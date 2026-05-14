@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Care+ Connect — Recompensas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body data-page="recompensas">
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo-icon"><i class="bi bi-plus-circle-fill"></i></div>
+      <div><div class="sb-logo-name">Care+ Connect</div><div class="sb-logo-tag">Saúde com recompensas</div></div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section-label">Principal</div>
+      <a href="home.html"        class="sb-link"><i class="bi bi-house"></i><span>Início</span></a>
+      <a href="consultas.html"   class="sb-link"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+      <a href="recompensas.html" class="sb-link active"><i class="bi bi-trophy-fill"></i><span>Recompensas</span></a>
+      <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">Outros</div>
+      <a href="notificacoes.html"  class="sb-link"><i class="bi bi-bell"></i><span>Notificações</span></a>
+      <a href="ia-predicao.html"   class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
+      <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
+    </nav>
+    <div class="sb-user">
+      <div class="sb-avatar">M</div>
+      <div class="sb-user-info"><div class="sb-user-name">Mateus Silva</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
+      <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div id="main-wrap">
+  <div id="phone-shell">
+
+    <header class="g-header">
+      <div class="g-header-top">
+        <a href="home.html" class="g-header-btn me-2"><i class="bi bi-arrow-left"></i></a>
+        <h1 class="g-header-title">Suas Conquistas 🏆</h1>
+        <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
+      </div>
+      <div class="g-header-sub">
+        <div class="hdr-pts-label">Pontos totais</div>
+        <div class="hdr-pts-value">320 pts</div>
+        <span class="level-badge"><i class="bi bi-trophy"></i> Nível: Iniciante</span>
+      </div>
+    </header>
+
+    <div class="page-scroll">
+      <main class="page-body">
+
+        <!-- Conquistas: 4 colunas no desktop -->
+        <p class="section-title">Conquistas desbloqueadas</p>
+        <div class="achieve-grid">
+          <div class="achieve-card" style="background:#0ea5e9">
+            <span class="achieve-icon">⏰</span>
+            <div class="achieve-title" style="color:#fff">Paciente Pontual</div>
+            <div class="achieve-desc" style="color:rgba(255,255,255,.85)">3 consultas seguidas comparecidas</div>
+          </div>
+          <div class="achieve-card" style="background:#10b981">
+            <span class="achieve-icon">💚</span>
+            <div class="achieve-title" style="color:#fff">Cuidado Contínuo</div>
+            <div class="achieve-desc" style="color:rgba(255,255,255,.85)">6 meses sem No-show</div>
+          </div>
+          <div class="achieve-card" style="background:#f97316">
+            <span class="achieve-icon">👑</span>
+            <div class="achieve-title" style="color:#fff">Responsável Premium</div>
+            <div class="achieve-desc" style="color:rgba(255,255,255,.85)">1000 pontos alcançados</div>
+          </div>
+          <div class="achieve-card locked">
+            <span class="achieve-icon" style="filter:grayscale(1);opacity:.4">🌅</span>
+            <div class="achieve-title" style="color:var(--muted-fg)">Madrugador</div>
+            <div class="achieve-desc" style="color:var(--muted-fg)">5 consultas matinais seguidas</div>
+          </div>
+        </div>
+
+        <!-- Desktop: Ranking (esq) + Recompensas (dir) -->
+        <div class="dg-row dg-2">
+
+          <!-- Ranking -->
+          <div>
+            <p class="section-title">Ranking da sua região 📍</p>
+            <div class="rank-list">
+              <div class="rank-row">
+                <div class="rank-badge" style="background:#f59e0b">1</div>
+                <span class="rank-emoji">😊</span><span class="rank-name">Ana Silva</span><span class="rank-pts">1.250 pts</span>
+              </div>
+              <div class="rank-row">
+                <div class="rank-badge" style="background:#94a3b8">2</div>
+                <span class="rank-emoji">😊</span><span class="rank-name">Carlos Mendes</span><span class="rank-pts">980 pts</span>
+              </div>
+              <div class="rank-row is-me">
+                <div class="rank-badge" style="background:var(--primary)">3</div>
+                <span class="rank-emoji">🎯</span><span class="rank-name">Você</span><span class="rank-pts">320 pts</span>
+              </div>
+              <div class="rank-row">
+                <div class="rank-badge" style="background:var(--muted);color:var(--muted-fg)">4</div>
+                <span class="rank-emoji">😊</span><span class="rank-name">Maria Santos</span><span class="rank-pts">290 pts</span>
+              </div>
+              <div class="rank-row">
+                <div class="rank-badge" style="background:var(--muted);color:var(--muted-fg)">5</div>
+                <span class="rank-emoji">😊</span><span class="rank-name">João Oliveira</span><span class="rank-pts">245 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recompensas -->
+          <div>
+            <p class="section-title">Recompensas disponíveis 🎁</p>
+
+            <div class="reward-card" data-name="Café Premium" data-points="300">
+              <span class="reward-icon">☕</span>
+              <div class="reward-info">
+                <div class="reward-title">Café Premium</div>
+                <div class="reward-desc">Voucher Starbucks R$ 25</div>
+                <div class="reward-pts-row"><i class="bi bi-star-fill" style="color:#f59e0b;font-size:13px"></i><span class="reward-pts">300 pts</span></div>
+              </div>
+              <button class="reward-btn available">Resgatar</button>
+            </div>
+
+            <div class="reward-card" data-name="Desconto em Academia" data-points="500">
+              <span class="reward-icon">💪</span>
+              <div class="reward-info">
+                <div class="reward-title">Desconto em Academia</div>
+                <div class="reward-desc">20% de desconto na Smart Fit</div>
+                <div class="reward-pts-row"><i class="bi bi-star-fill" style="color:#f59e0b;font-size:13px"></i><span class="reward-pts">500 pts</span></div>
+              </div>
+              <button class="reward-btn locked-btn">Bloqueado</button>
+            </div>
+
+            <div class="reward-card" data-name="Consulta Priority" data-points="400">
+              <span class="reward-icon">⚡</span>
+              <div class="reward-info">
+                <div class="reward-title">Consulta Priority</div>
+                <div class="reward-desc">Agendamento prioritário por 1 mês</div>
+                <div class="reward-pts-row"><i class="bi bi-star-fill" style="color:#f59e0b;font-size:13px"></i><span class="reward-pts">400 pts</span></div>
+              </div>
+              <button class="reward-btn locked-btn">Bloqueado</button>
+            </div>
+
+            <div class="reward-card" data-name="Gift Card Saúde" data-points="800">
+              <span class="reward-icon">🎁</span>
+              <div class="reward-info">
+                <div class="reward-title">Gift Card Saúde</div>
+                <div class="reward-desc">R$ 50 em produtos de bem-estar</div>
+                <div class="reward-pts-row"><i class="bi bi-star-fill" style="color:#f59e0b;font-size:13px"></i><span class="reward-pts">800 pts</span></div>
+              </div>
+              <button class="reward-btn locked-btn">Bloqueado</button>
+            </div>
+          </div>
+
+        </div><!-- /dg-row ranking + recompensas -->
+
+        <!-- Missões: 2 colunas no desktop -->
+        <p class="section-title">Missões Ativas 🎯</p>
+        <div class="dg-row dg-2">
+
+          <div class="mission-card">
+            <span class="mission-icon">🎯</span>
+            <div class="mission-info">
+              <div class="mission-title-row">
+                <span class="mission-title">Compareça a 5 consultas seguidas</span>
+                <span class="mission-pts-badge"><i class="bi bi-star-fill" style="color:var(--primary);font-size:12px"></i><span class="mission-pts">+100</span></span>
+              </div>
+              <div class="mission-desc">Mantenha sua frequência perfeita</div>
+              <div class="prog-info"><span class="prog-info-label">Progresso: 3/5</span><span class="prog-info-pct">60%</span></div>
+              <div class="prog-track dark mt-1"><div class="bar-fill" style="width:60%;background:var(--primary)" data-pct="60%"></div></div>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-icon">✅</span>
+            <div class="mission-info">
+              <div class="mission-title-row">
+                <span class="mission-title">Confirme 3 consultas com antecedência</span>
+                <span class="mission-pts-badge"><i class="bi bi-star-fill" style="color:var(--primary);font-size:12px"></i><span class="mission-pts">+50</span></span>
+              </div>
+              <div class="mission-desc">Confirme pelo menos 24h antes</div>
+              <div class="prog-info"><span class="prog-info-label">Progresso: 2/3</span><span class="prog-info-pct">67%</span></div>
+              <div class="prog-track dark mt-1"><div class="bar-fill" style="width:67%;background:var(--primary)" data-pct="67%"></div></div>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-icon">📋</span>
+            <div class="mission-info">
+              <div class="mission-title-row">
+                <span class="mission-title">Complete seu perfil de saúde</span>
+                <span class="mission-pts-badge"><i class="bi bi-star-fill" style="color:var(--primary);font-size:12px"></i><span class="mission-pts">+30</span></span>
+              </div>
+              <div class="mission-desc">Preencha todas as informações</div>
+              <div class="mission-done"><i class="bi bi-check-circle-fill"></i> Missão completa! Pontos creditados</div>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-icon">⏰</span>
+            <div class="mission-info">
+              <div class="mission-title-row">
+                <span class="mission-title">Seja pontual em 10 consultas</span>
+                <span class="mission-pts-badge"><i class="bi bi-star-fill" style="color:var(--primary);font-size:12px"></i><span class="mission-pts">+150</span></span>
+              </div>
+              <div class="mission-desc">Chegue no horário marcado</div>
+              <div class="prog-info"><span class="prog-info-label">Progresso: 6/10</span><span class="prog-info-pct">60%</span></div>
+              <div class="prog-track dark mt-1"><div class="bar-fill" style="width:60%;background:var(--orange)" data-pct="60%"></div></div>
+            </div>
+          </div>
+
+          <div class="mission-card">
+            <span class="mission-icon">👥</span>
+            <div class="mission-info">
+              <div class="mission-title-row">
+                <span class="mission-title">Indique um amigo</span>
+                <span class="mission-pts-badge"><i class="bi bi-star-fill" style="color:var(--primary);font-size:12px"></i><span class="mission-pts">+200</span></span>
+              </div>
+              <div class="mission-desc">Convide amigos para o Care+ Connect</div>
+              <div class="prog-info"><span class="prog-info-label">Progresso: 0/1</span><span class="prog-info-pct">0%</span></div>
+              <div class="prog-track dark mt-1"><div class="bar-fill" style="width:0%;background:var(--purple)" data-pct="0%"></div></div>
+            </div>
+          </div>
+
+        </div><!-- /missions grid -->
+
+      </main>
+    </div>
+
+    <nav id="bottom-nav">
+      <a href="home.html"        class="nav-tab"><i class="bi bi-house"></i><span>Início</span></a>
+      <a href="consultas.html"   class="nav-tab"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+      <a href="recompensas.html" class="nav-tab active"><i class="bi bi-trophy-fill"></i><span>Recompensas</span></a>
+      <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
+    </nav>
+
+  </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

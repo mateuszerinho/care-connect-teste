@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Care+ Connect — Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="login">
+
+<!-- Desktop: full-page wrapper -->
+<div class="login-page-wrap">
+
+  <!-- LEFT PANEL — desktop branding (hidden on mobile) -->
+  <div class="login-left-panel">
+    <div class="llp-inner">
+      <div class="llp-logo">
+        <div class="llp-logo-icon"><i class="bi bi-plus-circle-fill"></i></div>
+        <div>
+          <div class="llp-brand">Care+ Connect</div>
+          <div class="llp-tagline">Saúde com recompensas</div>
+        </div>
+      </div>
+
+      <div class="llp-headline">
+        Cuide da sua<br/>saúde e seja<br/><em>recompensado</em>
+      </div>
+      <p class="llp-sub">Agende consultas, acompanhe seu histórico e ganhe pontos por cada passo na sua jornada de saúde.</p>
+
+      <ul class="llp-features">
+        <li><i class="bi bi-calendar2-check-fill"></i> Consultas e agendamentos fáceis</li>
+        <li><i class="bi bi-trophy-fill"></i> Sistema de pontos e recompensas</li>
+        <li><i class="bi bi-cpu-fill"></i> IA preditiva de saúde personalizada</li>
+        <li><i class="bi bi-bell-fill"></i> Notificações e lembretes inteligentes</li>
+      </ul>
+
+      <div class="llp-deco-circle llp-c1"></div>
+      <div class="llp-deco-circle llp-c2"></div>
+      <div class="llp-deco-circle llp-c3"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL — form -->
+  <div id="phone-shell">
+    <main class="login-page">
+
+      <!-- Logo (mobile only) -->
+      <div class="logo-badge">
+        <div class="logo-icon"><i class="bi bi-plus-circle-fill"></i></div>
+        <div>
+          <div class="logo-brand">Care+ Connect</div>
+          <div class="logo-tagline">Saúde com recompensas</div>
+        </div>
+      </div>
+
+      <!-- Desktop heading (desktop only) -->
+      <div class="login-desktop-heading">
+        <h1 class="ldh-title">Bem-vindo de volta</h1>
+        <p class="ldh-sub">Entre na sua conta para continuar</p>
+      </div>
+
+      <div class="login-card">
+        <p class="login-subtitle">Cuide da sua saúde com pontualidade e recompensas!</p>
+
+        <form id="login-form" novalidate>
+          <div class="mb-3">
+            <label class="form-lbl" for="login-email">E-mail</label>
+            <input class="input-cc" id="login-email" type="email"
+                   placeholder="seu@email.com" autocomplete="email" />
+          </div>
+          <div class="mb-4">
+            <label class="form-lbl" for="login-password">Senha</label>
+            <div class="input-wrap">
+              <input class="input-cc padded-right" id="login-password" type="password"
+                     placeholder="••••••••" autocomplete="current-password" />
+              <button class="eye-toggle" type="button" id="btn-eye" aria-label="Mostrar senha">
+                <i class="bi bi-eye" id="eye-icon"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-cc btn-gradient">Entrar</button>
+        </form>
+      </div>
+
+      <div class="divider-or w-100"><span>ou</span></div>
+
+      <button class="btn-cc btn-gradient mb-3" id="btn-google">
+        <i class="bi bi-google"></i> Entrar com Google
+      </button>
+      <button class="btn-cc btn-outline-cc mb-3" id="btn-careplus">
+        Entrar com Care Plus ID
+      </button>
+      <button class="link-create">Criar conta</button>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
