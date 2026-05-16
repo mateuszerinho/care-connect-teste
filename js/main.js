@@ -425,10 +425,28 @@ document.addEventListener('DOMContentLoaded', () => {
     case 'consultas':     initConsultas();  initCalendar(); break;
     case 'recompensas':   initRecompensas(); break;
     case 'perfil':        initPerfil();     break;
-    case 'configuracoes': initPerfil();     break;  // reusa toggles + logout
+    case 'configuracoes': initPerfil();     break;
     case 'notificacoes':  initNotificacoes(); break;
   }
 
   // Animações de barras em qualquer página
   animateProgressBars();
+
+  // Setas de voltar — navega para a página anterior do histórico
+  initBackButtons();
 });
+
+
+/* ──────────────────────────────────────────────────────────────
+   11. BACK BUTTONS — Voltar para a última página visitada
+   ────────────────────────────────────────────────────────────── */
+function initBackButtons() {
+  document.querySelectorAll('.g-header-btn .bi-arrow-left').forEach(icon => {
+    const btn = icon.closest('.g-header-btn');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      history.back();
+    });
+  });
+}
