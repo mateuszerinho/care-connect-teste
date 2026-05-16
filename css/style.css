@@ -5,8 +5,9 @@
 
 /* ── VARIABLES ─────────────────────────────────────────────── */
 :root {
-  --primary:        #0ea5e9;
-  --primary-dk:     #0284c7;
+  --primary:    #0379C4;          /* era #0ea5e9 */
+  --primary-dk: #005fa3;          /* era #0284c7 */
+  --primary-lt: #0d9488;          /* nova — tom suave do gradiente */
   --accent:         #10b981;
   --accent-dk:      #059669;
   --orange:         #f97316;
@@ -23,7 +24,7 @@
   --border:         #e2e8f0;
   --page-bg:        #f0f4f8;
 
-  --blue-lt:        #eff6ff;
+  --blue-lt:        #e6f3fb;      /* era #eff6ff — ajustado pro novo azul */
   --green-lt:       #f0fdf4;
   --orange-lt:      #fff7ed;
   --purple-lt:      #faf5ff;
@@ -40,8 +41,8 @@
   --shadow-md:      0 4px 20px rgba(0,0,0,.10);
   --shadow-lg:      0 8px 40px rgba(0,0,0,.12);
 
-  --gradient:       linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  --gradient-h:     linear-gradient(100deg,  var(--primary) 0%, var(--accent) 100%);
+  --gradient:   linear-gradient(90deg, var(--primary) 0%, var(--primary-lt) 100%);   /* era …accent */
+  --gradient-h: linear-gradient(90deg,  var(--primary) 0%, var(--primary-lt) 100%);  /* era …accent */
 
   --font:           'DM Sans', sans-serif;
   --nav-h:          68px;
@@ -136,6 +137,11 @@ img { max-width: 100%; }
   padding: 0 8px;
   flex-shrink: 0;
   z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 .nav-tab {
   display: flex; flex-direction: column; align-items: center; gap: 3px;
@@ -152,7 +158,7 @@ img { max-width: 100%; }
 /* ── PAGE BODY ──────────────────────────────────────────────── */
 .page-body {
   padding: 16px;
-  padding-bottom: 24px;
+  padding-bottom: calc(var(--nav-h) + 16px); /* era 24px — agora compensa a nav fixa */
   animation: fadeUp .25s ease;
 }
 @keyframes fadeUp {
@@ -732,16 +738,20 @@ img { max-width: 100%; }
     max-height: calc(100dvh - 48px);
   }
 
+  /* ▼ NOVO — cancela o fixed do mobile; no tablet o scroll é interno */
+  #bottom-nav {
+    position: static;
+    width: auto;
+    bottom: auto;
+  }
+
   .login-page { padding: 40px 32px 56px; }
   .login-card { padding: 32px; }
 
-  /* Slightly more spacious page body */
   .page-body { padding: 20px; }
 
-  /* Specialty grid: 3 columns on tablet */
   .spec-grid { grid-template-columns: repeat(3, 1fr); }
 
-  /* Toast position */
   #toast-container { bottom: 100px; }
 }
 
@@ -774,28 +784,23 @@ img { max-width: 100%; }
     min-width: var(--sidebar-w);
     height: 100dvh;
     background: var(--card);
-    border-right: 1px solid var(--border);
     overflow: hidden;
     flex-shrink: 0;
     z-index: 200;
   }
 
   .sb-brand {
-    background: var(--gradient-h);
-    padding: 24px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  line-height: 0; /* remove espaço fantasma abaixo da img */
   }
-  .sb-logo-icon {
-    width: 42px; height: 42px; border-radius: 12px;
-    background: rgba(255,255,255,.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; color: #fff; flex-shrink: 0;
+  .sb-brand-img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
   }
-  .sb-logo-name { font-size: 16px; font-weight: 800; color: #fff; line-height: 1.2; }
-  .sb-logo-tag  { font-size: 11px; color: rgba(255,255,255,.8); }
 
   .sb-nav {
     flex: 1;
@@ -1156,7 +1161,6 @@ img { max-width: 100%; }
   }
 
   .sb-link { font-size: 15px; padding: 12px 16px; }
-  .sb-brand { padding: 28px 24px; }
 
   .page-body { max-width: 1280px; padding: 36px 48px 48px; }
   .g-header  { padding: 22px 48px 24px; }
