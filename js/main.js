@@ -42,7 +42,6 @@ const Toast = (() => {
   return { show };
 })();
 
-
 /* ──────────────────────────────────────────────────────────────
    2. LOGIN — Validação de formulário e toggle de senha
    ────────────────────────────────────────────────────────────── */
@@ -103,7 +102,6 @@ function initLogin() {
     setTimeout(() => window.location.href = 'pages/home.html', 900);
   });
 }
-
 
 /* ──────────────────────────────────────────────────────────────
    3. CONSULTAS — Abas, seleção de especialidade, médico, horário
@@ -203,7 +201,6 @@ function initConsultas() {
   });
 }
 
-
 /* ──────────────────────────────────────────────────────────────
    4. CALENDÁRIO — Navegação entre meses
    ────────────────────────────────────────────────────────────── */
@@ -274,7 +271,6 @@ function initCalendar() {
   });
 }
 
-
 /* ──────────────────────────────────────────────────────────────
    5. NOTIFICAÇÕES — Filtro por categoria e dismiss
    ────────────────────────────────────────────────────────────── */
@@ -317,7 +313,6 @@ function initNotificacoes() {
   });
 }
 
-
 /* ──────────────────────────────────────────────────────────────
    6. RECOMPENSAS — Resgatar reward
    ────────────────────────────────────────────────────────────── */
@@ -329,12 +324,18 @@ function initRecompensas() {
         Toast.show(`🔒 Você precisa de ${pts} pts para resgatar.`, 'error');
         return;
       }
+
       const name = btn.closest('.reward-card')?.dataset.name || 'Recompensa';
       Toast.show(`🎉 "${name}" resgatado com sucesso!`, 'success');
+
+      // ▼ NOVO — muda o botão para "Resgatado" e desativa
+      btn.textContent = '✅ Resgatado';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      btn.style.cursor = 'default';
     });
   });
 }
-
 
 /* ──────────────────────────────────────────────────────────────
    7. PERFIL / CONFIGURAÇÕES — Toggles e logout
@@ -363,7 +364,6 @@ function initPerfil() {
   });
 }
 
-
 /* ──────────────────────────────────────────────────────────────
    8. HOME — Cancelar consulta
    ────────────────────────────────────────────────────────────── */
@@ -381,7 +381,6 @@ function initHome() {
     });
   });
 }
-
 
 /* ──────────────────────────────────────────────────────────────
    9. ANIMAÇÃO DE ENTRADA NAS BARRAS DE PROGRESSO
@@ -412,7 +411,6 @@ function animateProgressBars() {
   });
 }
 
-
 /* ──────────────────────────────────────────────────────────────
    10. INICIALIZAÇÃO — Detecta qual página está carregada
    ────────────────────────────────────────────────────────────── */
@@ -435,7 +433,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setas de voltar — navega para a página anterior do histórico
   initBackButtons();
 });
-
 
 /* ──────────────────────────────────────────────────────────────
    11. BACK BUTTONS — Voltar para a última página visitada
