@@ -1173,3 +1173,19 @@ img { max-width: 100%; }
   .reward-card { padding: 18px; }
   .mission-card { padding: 18px; }
 }
+
+/* ── SKELETON LOADER (home appt list) ───────────────────────── */
+@keyframes skeletonShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.sk-line {
+  height: 14px; border-radius: 7px;
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 800px 100%;
+  animation: skeletonShimmer 1.4s ease infinite;
+}
+.sk-w80 { width: 80%; }
+.sk-w60 { width: 60%; }
+.sk-w40 { width: 40%; }
+.home-skeleton { pointer-events: none; }

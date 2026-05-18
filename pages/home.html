@@ -79,39 +79,15 @@
         <!-- ── Desktop grid: consultas (left) + pontos/ações (right) ── -->
         <div class="dg-row dg-3-2">
 
-          <!-- COLUNA ESQUERDA: Consultas -->
+          <!-- COLUNA ESQUERDA: Consultas (renderizadas dinamicamente pelo main.js) -->
           <div>
             <p class="section-title">Próximas Consultas</p>
-
-            <div class="appt-card" style="border-left-color:#0ea5e9">
-              <div class="appt-badges">
-                <span class="appt-badge badge-online">📹 Online</span>
-                <span class="appt-badge badge-confirmed"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
-              </div>
-              <div class="appt-doctor">Dr. Carlos Mendes</div>
-              <div class="appt-spec">Cardiologia</div>
-              <div class="appt-detail"><i class="bi bi-calendar3" style="color:#0ea5e9"></i> Quinta-feira, 24 Out 2025</div>
-              <div class="appt-detail"><i class="bi bi-clock"     style="color:#0ea5e9"></i> 14:00</div>
-              <button class="btn-video">🎥 Entrar na consulta online</button>
-              <div class="appt-actions">
-                <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
-                <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
-              </div>
-            </div>
-
-            <div class="appt-card" style="border-left-color:#f97316">
-              <div class="appt-badges">
-                <span class="appt-badge badge-presencial">🏥 Presencial</span>
-                <span class="appt-badge badge-confirmed"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
-              </div>
-              <div class="appt-doctor">Dra. Ana Paula Costa</div>
-              <div class="appt-spec">Ortopedia — Acompanhamento</div>
-              <div class="appt-detail"><i class="bi bi-calendar3" style="color:#f97316"></i> Sexta-feira, 25 Out 2025</div>
-              <div class="appt-detail"><i class="bi bi-clock"     style="color:#f97316"></i> 10:30</div>
-              <div class="appt-detail"><i class="bi bi-geo-alt"   style="color:#f97316"></i> Care Plus — Av. Paulista, 1000</div>
-              <div class="appt-actions">
-                <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
-                <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
+            <div id="home-appt-list">
+              <!-- skeleton enquanto carrega -->
+              <div class="appt-card home-skeleton" style="border-left-color:#e2e8f0">
+                <div class="sk-line sk-w60"></div>
+                <div class="sk-line sk-w40" style="margin-top:6px"></div>
+                <div class="sk-line sk-w80" style="margin-top:10px"></div>
               </div>
             </div>
           </div>
