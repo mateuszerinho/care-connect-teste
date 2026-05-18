@@ -2,106 +2,149 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Care+ Connect — Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care+ Connect — Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="assets/img/icon.png" type="icon.png" />
+  <link rel="icon" href="assets/img/icon.png" type="image/png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body data-page="login">
 
-<!-- Desktop: full-page wrapper -->
-<div class="login-page-wrap">
+<div class="login-wrap">
 
-  <!-- LEFT PANEL — desktop branding (hidden on mobile) -->
-  <div class="login-left-panel">
-    <div class="llp-inner">
-      <div class="llp-logo">
-        <div class="llp-logo-icon"><i class="bi bi-plus-circle-fill"></i></div>
-        <div>
-          <div class="llp-brand">Care+ Connect</div>
-          <div class="llp-tagline">Saúde com recompensas</div>
+  <!-- ═══ LEFT PANEL (desktop only) ═══ -->
+  <div class="login-panel-left">
+    <div class="lpl-circle lpl-c1"></div>
+    <div class="lpl-circle lpl-c2"></div>
+    <div class="lpl-circle lpl-c3"></div>
+
+    <!-- ECG decoration -->
+    <svg class="lpl-ecg" viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 40 H180 L195 40 L210 10 L225 70 L240 25 L255 55 L265 40 H560"
+            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="lpl-top">
+      <div class="lpl-logo-wrap">
+        <img class="lpl-logo-img" src="assets/img/care_connect_logo.png" alt="Care+ Connect Logo"/>
+      </div>
+
+      <div class="lpl-tag">
+        <span class="lpl-dot"></span>
+        Plataforma de Saúde Digital
+      </div>
+
+      <h1 class="lpl-heading">Cuide da sua<br>saúde com <em>inteligência</em></h1>
+      <p class="lpl-desc">Consultas, acompanhamento e recompensas por pontualidade — tudo num só lugar.</p>
+    </div>
+
+    <div class="lpl-bottom">
+      <div class="lpl-stats">
+        <div class="lpl-stat">
+          <span class="lpl-stat-number">98k+</span>
+          <span class="lpl-stat-label">Pacientes</span>
+        </div>
+        <div class="lpl-stat-divider"></div>
+        <div class="lpl-stat">
+          <span class="lpl-stat-number">4.9★</span>
+          <span class="lpl-stat-label">Avaliação</span>
+        </div>
+        <div class="lpl-stat-divider"></div>
+        <div class="lpl-stat">
+          <span class="lpl-stat-number">350+</span>
+          <span class="lpl-stat-label">Médicos</span>
         </div>
       </div>
 
-      <div class="llp-headline">
-        Cuide da sua<br/>saúde e seja<br/><em>recompensado</em>
-      </div>
-      <p class="llp-sub">Agende consultas, acompanhe seu histórico e ganhe pontos por cada passo na sua jornada de saúde.</p>
-
-      <ul class="llp-features">
-        <li><i class="bi bi-calendar2-check-fill"></i> Consultas e agendamentos fáceis</li>
-        <li><i class="bi bi-trophy-fill"></i> Sistema de pontos e recompensas</li>
-        <li><i class="bi bi-cpu-fill"></i> IA preditiva de saúde personalizada</li>
-        <li><i class="bi bi-bell-fill"></i> Notificações e lembretes inteligentes</li>
-      </ul>
-
-      <div class="llp-deco-circle llp-c1"></div>
-      <div class="llp-deco-circle llp-c2"></div>
-      <div class="llp-deco-circle llp-c3"></div>
+      <p class="lpl-no-account">Ainda não tem uma conta?</p>
+      <a href="#" class="lpl-btn-create">
+        Criar conta
+        <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+          <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </div>
 
-  <!-- RIGHT PANEL — form -->
-  <div id="phone-shell">
-    <main class="login-page">
+  <!-- ═══ RIGHT PANEL — form ═══ -->
+  <div class="login-panel-right">
 
-      <!-- Logo (mobile only) -->
-      <div class="logo-badge">
-        <div class="logo-icon"><i class="bi bi-plus-circle-fill"></i></div>
-        <div>
-          <div class="logo-brand">Care+ Connect</div>
-          <div class="logo-tagline">Saúde com recompensas</div>
+    <div class="lpr-header">
+      <p class="lpr-eyebrow">Acesso seguro</p>
+      <h2 class="lpr-title">Bem-vindo(a) de volta</h2>
+      <p class="lpr-sub">Entre na sua conta para continuar</p>
+    </div>
+
+    <form id="login-form" novalidate>
+
+      <div class="lf-field">
+        <label for="login-email">E-mail</label>
+        <div class="lf-input-wrap">
+          <span class="lf-input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="3"/>
+              <path d="m2 7 10 7 10-7"/>
+            </svg>
+          </span>
+          <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email" />
         </div>
       </div>
 
-      <!-- Desktop heading (desktop only) -->
-      <div class="login-desktop-heading">
-        <h1 class="ldh-title">Bem-vindo de volta</h1>
-        <p class="ldh-sub">Entre na sua conta para continuar</p>
+      <div class="lf-field">
+        <label for="login-password">Senha</label>
+        <div class="lf-input-wrap">
+          <span class="lf-input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
+          <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+          <button class="lf-eye-btn" type="button" id="btn-eye" aria-label="Mostrar senha">
+            <i id="eye-icon" class="bi bi-eye"></i>
+          </button>
+        </div>
       </div>
 
-      <div class="login-card">
-        <p class="login-subtitle">Cuide da sua saúde com pontualidade e recompensas!</p>
-
-        <form id="login-form" novalidate>
-          <div class="mb-3">
-            <label class="form-lbl" for="login-email">E-mail</label>
-            <input class="input-cc" id="login-email" type="email"
-                   placeholder="seu@email.com" autocomplete="email" />
-          </div>
-          <div class="mb-4">
-            <label class="form-lbl" for="login-password">Senha</label>
-            <div class="input-wrap">
-              <input class="input-cc padded-right" id="login-password" type="password"
-                     placeholder="••••••••" autocomplete="current-password" />
-              <button class="eye-toggle" type="button" id="btn-eye" aria-label="Mostrar senha">
-                <i class="bi bi-eye" id="eye-icon"></i>
-              </button>
-            </div>
-          </div>
-          <button type="submit" class="btn-cc btn-gradient">Entrar</button>
-        </form>
+      <div class="lf-field-row">
+        <label class="lf-checkbox-wrap">
+          <input type="checkbox" />
+          <span>Manter-me conectado(a)</span>
+        </label>
+        <a href="#" class="lf-forgot">Esqueci minha senha</a>
       </div>
 
-      <div class="divider-or w-100"><span>ou</span></div>
+      <button type="submit" class="lf-btn-primary">Entrar</button>
 
-      <button class="btn-cc btn-gradient mb-3" id="btn-google">
-        <i class="bi bi-google"></i> Entrar com Google
+    </form>
+
+    <div class="lf-divider">ou continue com</div>
+
+    <div class="lf-social-btns">
+      <button class="lf-btn-social lf-btn-google" id="btn-google">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Google
       </button>
-      <button class="btn-cc btn-outline-cc mb-3" id="btn-careplus">
-        Entrar com Care Plus ID
+      <button class="lf-btn-social lf-btn-careplus" id="btn-careplus">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <path d="M12 21C6.5 21 2 17 2 12S6.5 3 12 3s10 4 10 9-4.5 9-10 9z"/>
+          <path d="M12 8v8M8 12h8"/>
+        </svg>
+        Care Plus ID
       </button>
-      <button class="link-create">Criar conta</button>
+    </div>
 
-    </main>
-  </div>
+  </div><!-- /.login-panel-right -->
 
-</div>
+</div><!-- /.login-wrap -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
