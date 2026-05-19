@@ -1014,8 +1014,20 @@ const ScheduledListController = (() => {
   }
 
   function _initiateCancel(aptId, card) {
+    // Usa o modal global injetado pelo main.js
+    if (window._ativarCancelarConsulta) {
+      // Cria um botão fantasma apenas para reutilizar a lógica do modal
+      const _phantom = document.createElement('button');
+      window._ativarCancelarConsulta(_phantom, () => _executarCancel(aptId, card));
+      _phantom.click();
+      return;
+    }
+    // Fallback caso o modal não esteja disponível
     if (!confirm('Tem certeza que deseja cancelar esta consulta?')) return;
+    _executarCancel(aptId, card);
+  }
 
+  function _executarCancel(aptId, card) {
     const apt = AppointmentStore.removeAppointment(aptId);
     if (!apt) return;
 

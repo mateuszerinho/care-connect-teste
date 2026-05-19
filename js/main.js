@@ -186,19 +186,7 @@ function initConsultas() {
     }, 400);
   });
 
-  /* ---- Cancelar consulta agendada ---- */
-  document.querySelectorAll('[data-action="cancelar-consulta"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (confirm('Deseja cancelar esta consulta?')) {
-        const card = btn.closest('.sched-card');
-        card.style.transition = 'opacity .3s, transform .3s';
-        card.style.opacity = '0';
-        card.style.transform = 'translateX(40px)';
-        setTimeout(() => card.remove(), 300);
-        Toast.show('Consulta cancelada.', 'default');
-      }
-    });
-  });
+  /* ---- Cancelar consulta agendada — tratado globalmente em main.js ---- */
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -350,13 +338,7 @@ function initPerfil() {
     });
   });
 
-  // Logout
-  document.getElementById('btn-logout')?.addEventListener('click', () => {
-    if (confirm('Deseja sair da conta?')) {
-      Toast.show('Até logo! 👋', 'default', 1200);
-      setTimeout(() => window.location.href = '../index.html', 800);
-    }
-  });
+  // Logout — tratado globalmente em main.js
 
   // Editar perfil — gerenciado por js/perfil.js
 }
@@ -432,24 +414,29 @@ function _renderHomeAppointments() {
         '<button class="appt-btn btn-cancel" data-action="cancelar-consulta" data-apt-id="' + apt.id + '">Cancelar</button>' +
       '</div>';
 
-    card.querySelector('[data-action="cancelar-consulta"]').addEventListener('click', function() {
-      if (!confirm('Deseja cancelar esta consulta?')) return;
-      const aptId = this.dataset.aptId;
-      try {
-        const raw  = localStorage.getItem(STORAGE_KEY);
-        const data = raw ? JSON.parse(raw) : {};
-        data.appointments = (data.appointments || []).filter(function(a) { return a.id !== aptId; });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      } catch (_) {}
-      card.style.transition = 'opacity .3s, transform .3s';
-      card.style.opacity    = '0';
-      card.style.transform  = 'translateX(40px)';
-      setTimeout(function() {
-        card.remove();
-        Toast.show('Consulta cancelada.');
-        _renderHomeAppointments();
-      }, 320);
-    });
+    (function() {
+      var cancelBtn = card.querySelector('[data-action="cancelar-consulta"]');
+      if (!cancelBtn) return;
+      if (window._ativarCancelarConsulta) {
+        window._ativarCancelarConsulta(cancelBtn, function() {
+          var aptId = cancelBtn.dataset.aptId;
+          try {
+            var raw  = localStorage.getItem(STORAGE_KEY);
+            var data = raw ? JSON.parse(raw) : {};
+            data.appointments = (data.appointments || []).filter(function(a) { return a.id !== aptId; });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          } catch (_) {}
+          card.style.transition = 'opacity .3s, transform .3s';
+          card.style.opacity    = '0';
+          card.style.transform  = 'translateX(40px)';
+          setTimeout(function() {
+            card.remove();
+            Toast.show('Consulta cancelada.');
+            _renderHomeAppointments();
+          }, 320);
+        });
+      }
+    })();
 
     container.appendChild(card);
   });
@@ -522,6 +509,165 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sbAvatar) sbAvatar.textContent = letra;
     if (hdrNome)  hdrNome.textContent  = primeiroNome;
   })();
+
+  /* ── Injeta modais globais de confirmação ── */
+  (function injectModais() {
+    const modalCSS = `
+      .cc-modal-overlay{position:fixed;inset:0;z-index:1055;display:flex;align-items:center;justify-content:center;
+        background:rgba(0,0,0,.45);opacity:0;transition:opacity .2s;pointer-events:none;}
+      .cc-modal-overlay.show{opacity:1;pointer-events:all;}
+      .cc-modal-box{background:#fff;border-radius:16px;padding:28px 24px 20px;max-width:320px;width:90%;
+        transform:translateY(20px) scale(.97);transition:transform .22s,opacity .22s;opacity:0;
+        box-shadow:0 8px 32px rgba(0,0,0,.18);font-family:var(--font,'DM Sans',sans-serif);}
+      .cc-modal-overlay.show .cc-modal-box{transform:translateY(0) scale(1);opacity:1;}
+      .cc-modal-icon{font-size:38px;text-align:center;margin-bottom:12px;}
+      .cc-modal-title{font-size:17px;font-weight:800;color:var(--text,#1a1a2e);text-align:center;margin-bottom:6px;}
+      .cc-modal-desc{font-size:13px;color:#64748b;text-align:center;line-height:1.5;margin-bottom:22px;}
+      .cc-modal-actions{display:flex;gap:10px;}
+      .cc-modal-btn{flex:1;padding:11px 0;border-radius:10px;font-size:14px;font-weight:700;
+        border:none;cursor:pointer;transition:opacity .15s,transform .1s;font-family:inherit;}
+      .cc-modal-btn:active{opacity:.85;transform:scale(.97);}
+      .cc-modal-btn.secondary{background:#f1f5f9;color:var(--text,#1a1a2e);}
+      .cc-modal-btn.danger{background:#ef4444;color:#fff;}
+      .cc-modal-btn.primary{background:var(--primary,#0379C4);color:#fff;}
+    `;
+    const style = document.createElement('style');
+    style.textContent = modalCSS;
+    document.head.appendChild(style);
+
+    // --- Modal de Logout ---
+    const logoutEl = document.createElement('div');
+    logoutEl.className = 'cc-modal-overlay';
+    logoutEl.id = 'modalLogout';
+    logoutEl.innerHTML = `
+      <div class="cc-modal-box" role="dialog" aria-modal="true" aria-labelledby="logout-title">
+        <div class="cc-modal-icon">👋</div>
+        <div class="cc-modal-title" id="logout-title">Sair da conta?</div>
+        <div class="cc-modal-desc">Tem certeza que deseja encerrar sua sessão?</div>
+        <div class="cc-modal-actions">
+          <button class="cc-modal-btn secondary" id="logout-cancelar">Cancelar</button>
+          <button class="cc-modal-btn danger"    id="logout-confirmar">Sair</button>
+        </div>
+      </div>`;
+    document.body.appendChild(logoutEl);
+
+    // --- Modal de Cancelar Consulta ---
+    const cancelEl = document.createElement('div');
+    cancelEl.className = 'cc-modal-overlay';
+    cancelEl.id = 'modalCancelarConsulta';
+    cancelEl.innerHTML = `
+      <div class="cc-modal-box" role="dialog" aria-modal="true" aria-labelledby="cancel-title">
+        <div class="cc-modal-icon">🗓️</div>
+        <div class="cc-modal-title" id="cancel-title">Cancelar agendamento?</div>
+        <div class="cc-modal-desc">Esta ação não pode ser desfeita. Deseja realmente cancelar esta consulta?</div>
+        <div class="cc-modal-actions">
+          <button class="cc-modal-btn secondary" id="cancel-voltar">Voltar</button>
+          <button class="cc-modal-btn danger"    id="cancel-confirmar">Cancelar consulta</button>
+        </div>
+      </div>`;
+    document.body.appendChild(cancelEl);
+
+    // Fecha ao clicar fora da caixa
+    [logoutEl, cancelEl].forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) fecharModal(overlay);
+      });
+    });
+
+    // ESC fecha qualquer modal aberto
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.cc-modal-overlay.show')
+          .forEach(o => fecharModal(o));
+      }
+    });
+  })();
+
+  /* ── Helpers de modal ── */
+  function abrirModal(el) {
+    el.style.display = 'flex';
+    requestAnimationFrame(() => el.classList.add('show'));
+  }
+  function fecharModal(el) {
+    el.classList.remove('show');
+    el.addEventListener('transitionend', () => { el.style.display = ''; }, { once: true });
+  }
+
+  /* ── Logout global: intercepta .sb-logout e #btn-logout ── */
+  function _ativarLogout(target, redirectUrl) {
+    const overlay    = document.getElementById('modalLogout');
+    const btnConfirm = document.getElementById('logout-confirmar');
+    const btnCancel  = document.getElementById('logout-cancelar');
+    if (!overlay) return;
+
+    target.addEventListener('click', e => {
+      e.preventDefault();
+      abrirModal(overlay);
+
+      const onConfirm = () => {
+        fecharModal(overlay);
+        Toast.show('Até logo! 👋', 'default', 1200);
+        setTimeout(() => window.location.href = redirectUrl, 800);
+        cleanup();
+      };
+      const onCancel = () => { fecharModal(overlay); cleanup(); };
+      const cleanup  = () => {
+        btnConfirm.removeEventListener('click', onConfirm);
+        btnCancel.removeEventListener('click', onCancel);
+      };
+
+      btnConfirm.addEventListener('click', onConfirm);
+      btnCancel.addEventListener('click', onCancel);
+    });
+  }
+
+  // Botão de logout na sidebar (todos os levels de pasta)
+  document.querySelectorAll('.sb-logout').forEach(link => {
+    const href = link.getAttribute('href') || '../index.html';
+    _ativarLogout(link, href);
+  });
+
+  // Botão "Sair da conta" na página de perfil
+  const btnLogoutPerfil = document.getElementById('btn-logout');
+  if (btnLogoutPerfil) _ativarLogout(btnLogoutPerfil, '../index.html');
+
+  /* ── Cancelar consulta global: intercepta [data-action="cancelar-consulta"] ── */
+  function ativarCancelarConsulta(btn, onConfirmado) {
+    const overlay    = document.getElementById('modalCancelarConsulta');
+    const btnConfirm = document.getElementById('cancel-confirmar');
+    const btnVoltar  = document.getElementById('cancel-voltar');
+    if (!overlay) return;
+
+    btn.addEventListener('click', () => {
+      abrirModal(overlay);
+
+      const onConfirm = () => { fecharModal(overlay); onConfirmado(); cleanup(); };
+      const onCancel  = () => { fecharModal(overlay); cleanup(); };
+      const cleanup   = () => {
+        btnConfirm.removeEventListener('click', onConfirm);
+        btnVoltar.removeEventListener('click', onCancel);
+      };
+
+      btnConfirm.addEventListener('click', onConfirm);
+      btnVoltar.addEventListener('click', onCancel);
+    });
+  }
+
+  // Cancela consultas estáticas (HTML fixo em consultas.html)
+  document.querySelectorAll('[data-action="cancelar-consulta"]').forEach(btn => {
+    ativarCancelarConsulta(btn, () => {
+      const card = btn.closest('.sched-card');
+      if (!card) return;
+      card.style.transition = 'opacity .3s, transform .3s';
+      card.style.opacity    = '0';
+      card.style.transform  = 'translateX(40px)';
+      setTimeout(() => card.remove(), 300);
+      Toast.show('Consulta cancelada.', 'default');
+    });
+  });
+
+  // Expõe ativarCancelarConsulta globalmente para cards dinâmicos (home.js)
+  window._ativarCancelarConsulta = ativarCancelarConsulta;
 
   switch (page) {
     case 'login':         initLogin();      break;
