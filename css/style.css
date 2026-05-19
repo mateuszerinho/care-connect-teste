@@ -5,9 +5,9 @@
 
 /* ── VARIABLES ─────────────────────────────────────────────── */
 :root {
-  --primary:    #0379C4;          /* era #0ea5e9 */
-  --primary-dk: #005fa3;          /* era #0284c7 */
-  --primary-lt: #0d9488;          /* nova — tom suave do gradiente */
+  --primary:    #0379C4;
+  --primary-dk: #005fa3;
+  --primary-lt: #0d9488;          /* tom suave para gradiente */
   --accent:         #10b981;
   --accent-dk:      #059669;
   --orange:         #f97316;
@@ -24,7 +24,7 @@
   --border:         #e2e8f0;
   --page-bg:        #f0f4f8;
 
-  --blue-lt:        #e6f3fb;      /* era #eff6ff — ajustado pro novo azul */
+  --blue-lt:        #e6f3fb;
   --green-lt:       #f0fdf4;
   --orange-lt:      #fff7ed;
   --purple-lt:      #faf5ff;
@@ -41,8 +41,8 @@
   --shadow-md:      0 4px 20px rgba(0,0,0,.10);
   --shadow-lg:      0 8px 40px rgba(0,0,0,.12);
 
-  --gradient:   linear-gradient(90deg, var(--primary) 0%, var(--primary-lt) 100%);   /* era …accent */
-  --gradient-h: linear-gradient(90deg,  var(--primary) 0%, var(--primary-lt) 100%);  /* era …accent */
+  --gradient:   linear-gradient(90deg, var(--primary) 0%, var(--primary-lt) 100%);
+  --gradient-h: linear-gradient(90deg,  var(--primary) 0%, var(--primary-lt) 100%);
 
   --font:           'DM Sans', sans-serif;
   --nav-h:          68px;
@@ -158,7 +158,7 @@ img { max-width: 100%; }
 /* ── PAGE BODY ──────────────────────────────────────────────── */
 .page-body {
   padding: 16px;
-  padding-bottom: calc(var(--nav-h) + 16px); /* era 24px — agora compensa a nav fixa */
+  padding-bottom: calc(var(--nav-h) + 16px); /* compensa a altura da nav fixa */
   animation: fadeUp .25s ease;
 }
 @keyframes fadeUp {
@@ -180,7 +180,7 @@ img { max-width: 100%; }
 }
 
 /* ── LOGIN ──────────────────────────────────────────────────── */
-/* Variáveis específicas do login */
+/* ── VARIÁVEIS DO LOGIN ────────────────────────────────────── */
 :root {
   --lf-blue-mid:    #1469c7;
   --lf-blue-bright: #1e88e5;
@@ -190,13 +190,13 @@ img { max-width: 100%; }
   --lf-transition:  all .22s cubic-bezier(.4,0,.2,1);
 }
 
-/* Fundo da página de login (mobile) */
+/* ── FUNDO DA PÁGINA DE LOGIN (mobile) ─────────────────────── */
 body[data-page="login"] {
   background: linear-gradient(135deg, #0d2d5c 0%, #1564c9 45%, #0097a7 100%);
   min-height: 100vh;
 }
 
-/* Wrapper geral */
+/* ── WRAPPER GERAL ─────────────────────────────────────────── */
 .login-wrap {
   min-height: 100vh;
   display: flex;
@@ -226,7 +226,7 @@ body[data-page="login"] {
   animation: lf-fadeUp .5s cubic-bezier(.4,0,.2,1) both;
 }
 
-/* Linha de cor no topo do painel */
+/* ── LINHA DECORATIVA NO TOPO DO PAINEL ───────────────────── */
 .login-panel-right::before {
   content: '';
   position: absolute;
@@ -235,7 +235,7 @@ body[data-page="login"] {
   background: linear-gradient(90deg, var(--lf-blue-bright) 0%, var(--lf-cyan) 100%);
 }
 
-/* Logo no painel direito — visível apenas no mobile */
+/* ── LOGO MOBILE (oculto no desktop) ───────────────────────── */
 .lpr-mobile-logo {
   display: flex;
   justify-content: center;
@@ -248,7 +248,7 @@ body[data-page="login"] {
   border-radius: 16px;
 }
 
-/* Bloco "Criar conta" no mobile — oculto no desktop (o painel esquerdo já tem esse botão) */
+/* ── LINK 'CRIAR CONTA' (mobile) — oculto no desktop ───────── */
 .lpr-no-account {
   display: flex;
   align-items: center;
@@ -898,7 +898,7 @@ body[data-page="login"] {
     max-height: calc(100dvh - 48px);
   }
 
-  /* ▼ NOVO — cancela o fixed do mobile; no tablet o scroll é interno */
+  /* No tablet o scroll é interno; cancela o fixed do mobile */
   #bottom-nav {
     position: static;
     width: auto;

@@ -88,14 +88,14 @@ function initLogin() {
     btn.disabled = true;
     btn.textContent = 'Entrando…';
 
-    // Salva e-mail no perfil; mantém nome já existente (do cadastro) ou deriva do e-mail
+    // Persiste e-mail no perfil; mantém nome existente ou deriva do endereço de e-mail
     const PERFIL_KEY = 'cc_perfil_v1';
     try {
       let perfil = {};
       const raw = localStorage.getItem(PERFIL_KEY);
       if (raw) perfil = JSON.parse(raw);
       if (!perfil.nome || perfil.nome === 'Usuario(a)') {
-        // Deriva um nome legível a partir do e-mail (ex: "joao.silva@..." → "Joao Silva")
+        // Extrai nome legível a partir do endereço de e-mail
         perfil.nome = email.split('@')[0]
           .replace(/[._\-+]/g, ' ')
           .replace(/\b\w/g, c => c.toUpperCase())
@@ -246,7 +246,7 @@ function initCalendar() {
 
     wrapper.innerHTML = html;
 
-    // Re-bind click on new days
+    // Rebinda o click nos dias após re-renderizar
     wrapper.querySelectorAll('.cal-day:not(.empty)').forEach(day => {
       day.addEventListener('click', () => {
         wrapper.querySelectorAll('.cal-day').forEach(d => d.classList.remove('selected'));
@@ -333,7 +333,7 @@ function initRecompensas() {
       const name = btn.closest('.reward-card')?.dataset.name || 'Recompensa';
       Toast.show(`🎉 "${name}" resgatado com sucesso!`, 'success');
 
-      // ▼ NOVO — muda o botão para "Resgatado" e desativa
+      // Atualiza botão para estado de resgatado
       btn.textContent = '✅ Resgatado';
       btn.disabled = true;
       btn.style.opacity = '0.7';
@@ -355,9 +355,6 @@ function initPerfil() {
     });
   });
 
-  // Logout — tratado globalmente em main.js
-
-  // Editar perfil — gerenciado por js/perfil.js
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -493,7 +490,7 @@ function animateProgressBars() {
   }, { threshold: 0.3 });
 
   bars.forEach(bar => {
-    // Salva a largura original antes de zerar
+    // Preserva a largura original antes de resetar para animação
     bar.dataset.pct = bar.style.width;
     io.observe(bar);
   });
@@ -683,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Expõe ativarCancelarConsulta globalmente para cards dinâmicos (home.js)
+  // Expõe ativarCancelarConsulta globalmente para uso em cards dinâmicos
   window._ativarCancelarConsulta = ativarCancelarConsulta;
 
   switch (page) {
@@ -692,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
     case 'consultas':
       // initConsultasV2 é carregado por js/consultas.js (script separado)
       if (typeof initConsultasV2 === 'function') initConsultasV2();
-      else { initConsultas(); initCalendar(); } // fallback
+      else { initConsultas(); initCalendar(); } // fallback se consultas.js não carregar
       break;
     case 'recompensas':   initRecompensas(); break;
     case 'perfil':        initPerfil();     break;

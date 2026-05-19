@@ -27,7 +27,7 @@
 const CONFIG = {
   STORAGE_KEY:      'cc_appointments_v2',
   STORAGE_TTL_DAYS: 7,
-  POINTS_MORNING:   40,   // bônus consulta manhã
+  POINTS_MORNING:   40,   // pontos extras para consultas no período da manhã
   POINTS_BASE:      20,   // pontos base por agendamento
   POINTS_CONFIRM:   10,   // pontos por confirmar com antecedência
   UNDO_TIMEOUT:     5000, // ms para desfazer cancelamento
@@ -1541,7 +1541,7 @@ function initConsultasV2() {
   CountdownController.init();
   FilterController.init();
 
-  // Re-bind tabs para garantir que o init do wizard seja acionado
+  // Rebinda as abas para garantir que o wizard seja inicializado corretamente
   const tabBtns   = document.querySelectorAll('.tab-btn[data-tab]');
   const tabPanels = document.querySelectorAll('.tab-panel[data-panel]');
   tabBtns.forEach(btn => {
