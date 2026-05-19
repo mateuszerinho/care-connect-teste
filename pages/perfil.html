@@ -31,8 +31,11 @@
       <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
     </nav>
     <div class="sb-user">
-      <div class="sb-avatar">M</div>
-      <div class="sb-user-info"><div class="sb-user-name">Mateus Silva</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
+      <div class="sb-avatar" id="sb-avatar">U</div>
+      <div class="sb-user-info">
+        <div class="sb-user-name" id="sb-user-name">Usuario(a)</div>
+        <div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div>
+      </div>
       <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
     </div>
   </aside>
@@ -49,11 +52,11 @@
         <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
       </div>
       <div class="avatar-area">
-        <div class="avatar-circle">M<div class="avatar-edit"><i class="bi bi-pencil"></i></div></div>
-        <div class="profile-name">Mateus Silva</div>
+        <div class="avatar-circle" id="avatar-circle">U<div class="avatar-edit"><i class="bi bi-pencil"></i></div></div>
+        <div class="profile-name" id="profile-name">Usuario(a)</div>
         <div class="profile-email-row">
           <i class="bi bi-envelope" style="color:rgba(255,255,255,.8);font-size:13px"></i>
-          <span class="profile-email">mateus.silva@email.com</span>
+          <span class="profile-email" id="profile-email">usuario@email.com</span>
         </div>
       </div>
     </header>
@@ -61,10 +64,9 @@
     <div class="page-scroll">
       <main class="page-body">
 
-        <!-- Desktop: 2 colunas -->
         <div class="dg-row dg-2">
 
-          <!-- Coluna esquerda: Estatísticas + Preferências de notificação -->
+          <!-- Coluna esquerda -->
           <div>
             <div class="cc-card">
               <div class="cc-card-title">Estatísticas</div>
@@ -106,7 +108,7 @@
             </div>
           </div>
 
-          <!-- Coluna direita: Lembretes + Ações -->
+          <!-- Coluna direita -->
           <div>
             <div class="cc-card">
               <div class="cc-card-title">Horário de Lembrete</div>
@@ -152,7 +154,81 @@
   </div>
   </div>
 </div>
+
+<!-- MODAL — EDITAR PERFIL -->
+<div class="modal fade" id="modalEditarPerfil" tabindex="-1" aria-labelledby="modalEditarPerfilLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;border:none;font-family:var(--font,'DM Sans',sans-serif);">
+
+      <div class="modal-header" style="border-bottom:1px solid var(--border,#e2e8f0);padding:20px 24px 16px;">
+        <h5 class="modal-title fw-bold" id="modalEditarPerfilLabel" style="font-size:17px;color:var(--text,#1a1a2e)">
+          <i class="bi bi-person-gear me-2" style="color:var(--primary,#0379C4)"></i>Editar Perfil
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body" style="padding:20px 24px;">
+        <p id="modal-erro" style="color:#ef4444;font-size:13px;min-height:18px;margin-bottom:4px;font-weight:500;"></p>
+
+        <div class="mb-3">
+          <label for="edit-nome" class="form-label fw-semibold" style="font-size:13px;color:var(--text,#1a1a2e)">Nome</label>
+          <input type="text" id="edit-nome" class="form-control" placeholder="Seu nome completo"
+            style="border-radius:10px;border:1.5px solid var(--border,#e2e8f0);font-size:14px;" />
+          <div class="invalid-feedback">Informe seu nome.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="edit-email" class="form-label fw-semibold" style="font-size:13px;color:var(--text,#1a1a2e)">E-mail</label>
+          <input type="email" id="edit-email" class="form-control" placeholder="seu@email.com"
+            style="border-radius:10px;border:1.5px solid var(--border,#e2e8f0);font-size:14px;" />
+          <div class="invalid-feedback">Informe um e-mail válido.</div>
+        </div>
+
+        <hr style="border-color:var(--border,#e2e8f0);margin:20px 0 14px;" />
+        <p style="font-size:12px;color:#64748b;margin-bottom:14px;">
+          Deixe os campos de senha em branco para mantê-la inalterada.
+        </p>
+
+        <div class="mb-3">
+          <label for="edit-senha" class="form-label fw-semibold" style="font-size:13px;color:var(--text,#1a1a2e)">Nova Senha</label>
+          <div class="input-group">
+            <input type="password" id="edit-senha" class="form-control" placeholder="Mínimo 6 caracteres"
+              style="border-radius:10px 0 0 10px;border:1.5px solid var(--border,#e2e8f0);font-size:14px;" />
+            <button class="btn btn-outline-secondary" type="button" data-toggle-senha="edit-senha"
+              style="border-radius:0 10px 10px 0;border:1.5px solid var(--border,#e2e8f0);border-left:none;" aria-label="Mostrar senha">
+              <i class="bi bi-eye"></i>
+            </button>
+            <div class="invalid-feedback">A senha deve ter pelo menos 6 caracteres.</div>
+          </div>
+        </div>
+
+        <div class="mb-1">
+          <label for="edit-confirmar" class="form-label fw-semibold" style="font-size:13px;color:var(--text,#1a1a2e)">Confirmar Senha</label>
+          <div class="input-group">
+            <input type="password" id="edit-confirmar" class="form-control" placeholder="Repita a nova senha"
+              style="border-radius:10px 0 0 10px;border:1.5px solid var(--border,#e2e8f0);font-size:14px;" />
+            <button class="btn btn-outline-secondary" type="button" data-toggle-senha="edit-confirmar"
+              style="border-radius:0 10px 10px 0;border:1.5px solid var(--border,#e2e8f0);border-left:none;" aria-label="Mostrar confirmação">
+              <i class="bi bi-eye"></i>
+            </button>
+            <div class="invalid-feedback">As senhas não coincidem.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="border-top:1px solid var(--border,#e2e8f0);padding:16px 24px;gap:10px;">
+        <button type="button" class="btn btn-outline-secondary flex-fill" data-bs-dismiss="modal"
+          style="border-radius:10px;font-weight:600;font-size:14px;">Cancelar</button>
+        <button type="button" id="btn-salvar-perfil" class="btn flex-fill"
+          style="border-radius:10px;font-weight:700;font-size:14px;background:var(--primary,#0379C4);color:#fff;">Salvar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/main.js"></script>
+<script src="../js/perfil.js"></script>
 </body>
 </html>

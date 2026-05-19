@@ -358,10 +358,7 @@ function initPerfil() {
     }
   });
 
-  // Editar perfil (placeholder)
-  document.getElementById('btn-editar-perfil')?.addEventListener('click', () => {
-    Toast.show('✏️ Funcionalidade em breve!');
-  });
+  // Editar perfil — gerenciado por js/perfil.js
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -503,6 +500,28 @@ function animateProgressBars() {
    ────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.body.dataset.page || '';
+
+  /* ── Aplica nome/avatar do perfil salvo em todas as páginas ── */
+  (function aplicarPerfilGlobal() {
+    const PERFIL_KEY = 'cc_perfil_v1';
+    const DEFAULT = { nome: 'Usuario(a)', email: 'usuario@email.com' };
+    let perfil = { ...DEFAULT };
+    try {
+      const raw = localStorage.getItem(PERFIL_KEY);
+      if (raw) perfil = { ...DEFAULT, ...JSON.parse(raw) };
+    } catch {}
+
+    const letra       = (perfil.nome || 'U').trim().charAt(0).toUpperCase();
+    const primeiroNome = (perfil.nome || 'Usuario(a)').split(' ')[0];
+
+    const sbNome   = document.getElementById('sb-user-name');
+    const sbAvatar = document.getElementById('sb-avatar');
+    const hdrNome  = document.getElementById('g-header-name');
+
+    if (sbNome)   sbNome.textContent   = perfil.nome;
+    if (sbAvatar) sbAvatar.textContent = letra;
+    if (hdrNome)  hdrNome.textContent  = primeiroNome;
+  })();
 
   switch (page) {
     case 'login':         initLogin();      break;
