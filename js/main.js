@@ -88,6 +88,23 @@ function initLogin() {
     btn.disabled = true;
     btn.textContent = 'Entrando…';
 
+    // Salva e-mail no perfil; mantém nome já existente (do cadastro) ou deriva do e-mail
+    const PERFIL_KEY = 'cc_perfil_v1';
+    try {
+      let perfil = {};
+      const raw = localStorage.getItem(PERFIL_KEY);
+      if (raw) perfil = JSON.parse(raw);
+      if (!perfil.nome || perfil.nome === 'Usuario(a)') {
+        // Deriva um nome legível a partir do e-mail (ex: "joao.silva@..." → "Joao Silva")
+        perfil.nome = email.split('@')[0]
+          .replace(/[._\-+]/g, ' ')
+          .replace(/\b\w/g, c => c.toUpperCase())
+          .trim() || 'Usuario(a)';
+      }
+      perfil.email = email;
+      localStorage.setItem(PERFIL_KEY, JSON.stringify(perfil));
+    } catch (_) {}
+
     setTimeout(() => window.location.href = 'pages/home.html', 700);
   });
 

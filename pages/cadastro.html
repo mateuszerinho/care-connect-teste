@@ -626,7 +626,17 @@
       Toast.show('Você precisa aceitar os Termos de Uso para continuar.', 'warning');
       return;
     }
-    // Aqui entra a lógica de criação de conta (API call etc.)
+    // Salva dados do cadastro no perfil (usado na sidebar, home e perfil)
+    try {
+      const telefone = document.getElementById('cad-telefone').value.trim();
+      const perfilData = {
+        nome:      nome + ' ' + sobrenome,
+        email:     email,
+        telefone:  telefone
+      };
+      localStorage.setItem('cc_perfil_v1', JSON.stringify(perfilData));
+    } catch (_) {}
+
     Toast.show(`Conta criada com sucesso! Bem-vindo(a), ${nome}!`, 'success');
     setTimeout(() => { window.location.href = 'home.html'; }, 1800);
   });
