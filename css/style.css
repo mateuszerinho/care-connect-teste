@@ -248,6 +248,43 @@ body[data-page="login"] {
   border-radius: 16px;
 }
 
+/* Bloco "Criar conta" no mobile — oculto no desktop (o painel esquerdo já tem esse botão) */
+.lpr-no-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #64748b;
+  flex-wrap: wrap;
+}
+.lpr-btn-criar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1469c7 0%, #0097a7 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity .18s, transform .18s, box-shadow .18s;
+  box-shadow: 0 4px 14px rgba(20,105,199,.30);
+  white-space: nowrap;
+}
+.lpr-btn-criar:hover {
+  opacity: .92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(20,105,199,.38);
+  color: #fff;
+}
+.lpr-btn-criar svg { transition: transform .2s; }
+.lpr-btn-criar:hover svg { transform: translateX(3px); }
+
 /* Cabeçalho do formulário */
 .lpr-header { margin-bottom: 1.75rem; }
 
@@ -1085,6 +1122,7 @@ body[data-page="login"] {
 
   /* Oculta logo mobile quando o painel esquerdo está visível */
   .lpr-mobile-logo { display: none; }
+  .lpr-no-account  { display: none; }
 
   /* Show left panel on desktop */
   .login-panel-left {
