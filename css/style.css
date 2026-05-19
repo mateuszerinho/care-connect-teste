@@ -235,6 +235,19 @@ body[data-page="login"] {
   background: linear-gradient(90deg, var(--lf-blue-bright) 0%, var(--lf-cyan) 100%);
 }
 
+/* Logo no painel direito — visível apenas no mobile */
+.lpr-mobile-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+.lpr-mobile-logo img {
+  width: 180px;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
 /* Cabeçalho do formulário */
 .lpr-header { margin-bottom: 1.75rem; }
 
@@ -1070,6 +1083,9 @@ body[data-page="login"] {
     animation: lf-fadeUp .6s cubic-bezier(.4,0,.2,1) both;
   }
 
+  /* Oculta logo mobile quando o painel esquerdo está visível */
+  .lpr-mobile-logo { display: none; }
+
   /* Show left panel on desktop */
   .login-panel-left {
     display: flex;
@@ -1111,8 +1127,8 @@ body[data-page="login"] {
   .lpl-logo-wrap { display: inline-block; margin-bottom: 2.5rem; }
   .lpl-logo-img {
     width: 200px; height: auto;
-    filter: brightness(0) invert(1);
     display: block;
+    border-radius: 16px;
   }
 
   /* Tag */
