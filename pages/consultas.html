@@ -11,220 +11,220 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body data-page="consultas">
-<div id="app">
+  <div id="app">
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar">
-    <div class="sb-brand">
-      <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
-    </div>
-    <nav class="sb-nav">
-      <div class="sb-section-label">Principal</div>
-      <a href="home.html"        class="sb-link"><i class="bi bi-house"></i><span>Início</span></a>
-      <a href="consultas.html"   class="sb-link active"><i class="bi bi-calendar3-fill"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
-      <div class="sb-divider"></div>
-      <div class="sb-section-label">Outros</div>
-      <a href="notificacoes.html"  class="sb-link"><i class="bi bi-bell"></i><span>Notificações</span></a>
-      <a href="ia-predicao.html"   class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
-      <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
-    </nav>
-    <div class="sb-user">
-      <div class="sb-avatar" id="sb-avatar">U</div>
-      <div class="sb-user-info"><div class="sb-user-name" id="sb-user-name">Usuario(a)</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
-      <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div id="main-wrap">
-  <div id="phone-shell">
-
-    <header class="g-header">
-      <div class="g-header-top">
-        <a href="home.html" class="g-header-btn me-2"><i class="bi bi-arrow-left"></i></a>
-        <h1 class="g-header-title">Consultas</h1>
-        <a href="notificacoes.html" class="g-header-btn"><i class="bi bi-bell"></i></a>
-        <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sb-brand">
+        <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
       </div>
-    </header>
+      <nav class="sb-nav">
+        <div class="sb-section-label">Principal</div>
+        <a href="home.html"        class="sb-link"><i class="bi bi-house"></i><span>Início</span></a>
+        <a href="consultas.html"   class="sb-link active"><i class="bi bi-calendar3-fill"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Outros</div>
+        <a href="notificacoes.html"  class="sb-link"><i class="bi bi-bell"></i><span>Notificações</span></a>
+        <a href="ia-predicao.html"   class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
+        <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
+      </nav>
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-avatar">U</div>
+        <div class="sb-user-info"><div class="sb-user-name" id="sb-user-name">Usuario(a)</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
+        <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
+    </aside>
 
-    <div class="page-scroll">
-      <main class="page-body">
+    <!-- MAIN -->
+    <div id="main-wrap">
+    <div id="phone-shell">
 
-        <div class="tabs-bar">
-          <button class="tab-btn active" data-tab="nova">Marcar Nova</button>
-          <button class="tab-btn"        data-tab="reagendar">Reagendar</button>
+      <header class="g-header">
+        <div class="g-header-top">
+          <a href="home.html" class="g-header-btn me-2"><i class="bi bi-arrow-left"></i></a>
+          <h1 class="g-header-title">Consultas</h1>
+          <a href="notificacoes.html" class="g-header-btn"><i class="bi bi-bell"></i></a>
+          <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
         </div>
+      </header>
 
-        <!-- ══ PAINEL: Marcar Nova ══════════════════════════════ -->
-        <div class="tab-panel" data-panel="nova">
+      <div class="page-scroll">
+        <main class="page-body">
 
-          <!-- Desktop: 2 columns (form left, calendar+time right) -->
-          <div class="dg-row dg-2">
-
-            <!-- Coluna esquerda: Especialidade + Médico -->
-            <div>
-              <div class="step-row"><div class="step-num">1</div><span class="step-title">Escolha a especialidade</span></div>
-              <div class="spec-grid">
-                <div class="spec-card" data-spec="card" data-bg="#fce7f3"><span class="spec-icon">❤️</span><span class="spec-label">Cardiologia</span></div>
-                <div class="spec-card" data-spec="derm" data-bg="#fef3c7"><span class="spec-icon">✨</span><span class="spec-label">Dermatologia</span></div>
-                <div class="spec-card" data-spec="orto" data-bg="#fef9c3"><span class="spec-icon">🦴</span><span class="spec-label">Ortopedia</span></div>
-                <div class="spec-card" data-spec="endo" data-bg="#fffbeb"><span class="spec-icon">⚡</span><span class="spec-label">Endocrinologia</span></div>
-                <div class="spec-card" data-spec="clin" data-bg="#eff6ff"><span class="spec-icon">🩺</span><span class="spec-label">Clínico Geral</span></div>
-                <div class="spec-card" data-spec="ped"  data-bg="#fce7f3"><span class="spec-icon">👶</span><span class="spec-label">Pediatria</span></div>
-              </div>
-
-              <div class="step-row"><div class="step-num">2</div><span class="step-title">Escolha o médico</span></div>
-              <div class="doctor-box">
-                <div id="doctor-placeholder" class="doctor-placeholder">Selecione uma especialidade primeiro</div>
-
-                <div class="doctor-group d-none" data-spec="card">
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Carlos Mendes</div><div class="doctor-crm">CRM 12345</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Fernanda Lima</div><div class="doctor-crm">CRM 67890</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-                <div class="doctor-group d-none" data-spec="derm">
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Julia Ramos</div><div class="doctor-crm">CRM 11111</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Rafael Costa</div><div class="doctor-crm">CRM 22222</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-                <div class="doctor-group d-none" data-spec="orto">
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Ana Paula Costa</div><div class="doctor-crm">CRM 33333</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Bruno Alves</div><div class="doctor-crm">CRM 44444</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-                <div class="doctor-group d-none" data-spec="endo">
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Marcos Faria</div><div class="doctor-crm">CRM 55555</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Carla Vieira</div><div class="doctor-crm">CRM 66666</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-                <div class="doctor-group d-none" data-spec="clin">
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Leonardo Souza</div><div class="doctor-crm">CRM 77777</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Patrícia Santos</div><div class="doctor-crm">CRM 88888</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-                <div class="doctor-group d-none" data-spec="ped">
-                  <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. André Campos</div><div class="doctor-crm">CRM 99999</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                  <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Renata Luz</div><div class="doctor-crm">CRM 10101</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
-                </div>
-              </div>
-            </div><!-- /col-left -->
-
-            <!-- Coluna direita: Calendário + Horário -->
-            <div>
-              <div class="step-row"><div class="step-num">3</div><span class="step-title">Escolha o dia</span></div>
-              <div class="calendar-wrap">
-                <div class="cal-header">
-                  <button class="cal-nav-btn" id="cal-prev"><i class="bi bi-chevron-left"></i></button>
-                  <span class="cal-month-label" id="cal-month-label">Outubro 2025</span>
-                  <button class="cal-nav-btn" id="cal-next"><i class="bi bi-chevron-right"></i></button>
-                </div>
-                <div class="cal-weekdays">
-                  <div class="cal-wd">Dom</div><div class="cal-wd">Seg</div><div class="cal-wd">Ter</div>
-                  <div class="cal-wd">Qua</div><div class="cal-wd">Qui</div><div class="cal-wd">Sex</div><div class="cal-wd">Sáb</div>
-                </div>
-                <div class="cal-days" id="calendar-body" data-month="9" data-year="2025">
-                  <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
-                  <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
-                  <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div>
-                  <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
-                  <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
-                  <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
-                  <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day today">24</div>
-                  <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
-                  <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div><div class="cal-day empty"></div>
-                </div>
-              </div>
-
-              <div class="step-row"><div class="step-num">4</div><span class="step-title">Escolha o horário</span></div>
-              <div class="time-card">
-                <div class="time-grid">
-                  <button class="time-slot">09:00</button><button class="time-slot">09:30</button>
-                  <button class="time-slot">10:00</button><button class="time-slot">10:30</button>
-                  <button class="time-slot">11:00</button><button class="time-slot">11:30</button>
-                  <button class="time-slot">14:00</button><button class="time-slot">14:30</button>
-                  <button class="time-slot">15:00</button><button class="time-slot">15:30</button>
-                  <button class="time-slot">16:00</button><button class="time-slot">16:30</button>
-                </div>
-              </div>
-
-              <div class="tip-box">
-                <i class="bi bi-lightbulb-fill" style="color:#f59e0b;font-size:16px;flex-shrink:0;margin-top:2px"></i>
-                <div class="tip-text"><strong>Dica inteligente</strong><br>Horários da manhã têm menor taxa de cancelamento e você ganha <strong>+20 pontos</strong> extras!</div>
-              </div>
-
-              <button class="btn-confirm" id="btn-confirmar">Confirmar Agendamento</button>
-            </div><!-- /col-right -->
-
-          </div><!-- /dg-row -->
-        </div><!-- /panel nova -->
-
-
-        <!-- ══ PAINEL: Reagendar ══════════════════════════════════ -->
-        <div class="tab-panel d-none" data-panel="reagendar">
-          <p class="section-title">Suas Consultas Agendadas</p>
-
-          <div class="dg-row dg-2">
-
-            <div class="sched-card">
-              <div class="sched-header">
-                <span class="sched-avatar">🧑‍⚕️</span>
-                <div>
-                  <div class="sched-title-row">
-                    <span class="sched-doctor">Dr. Carlos Mendes</span>
-                    <span class="confirmed-badge"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
-                  </div>
-                  <div class="sched-spec">Cardiologia</div>
-                </div>
-              </div>
-              <div>
-                <div class="sched-detail"><i class="bi bi-calendar3" style="color:var(--primary)"></i> Quinta-feira, 24 Out 2025</div>
-                <div class="sched-detail"><i class="bi bi-clock"     style="color:var(--primary)"></i> 14:00</div>
-                <button class="btn-video mt-1">🎥 Consulta Online</button>
-              </div>
-              <div class="sched-actions">
-                <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
-                <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
-              </div>
-            </div>
-
-            <div class="sched-card">
-              <div class="sched-header">
-                <span class="sched-avatar">👩‍⚕️</span>
-                <div>
-                  <div class="sched-title-row">
-                    <span class="sched-doctor">Dra. Ana Paula Costa</span>
-                    <span class="confirmed-badge"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
-                  </div>
-                  <div class="sched-spec">Ortopedia — Acompanhamento</div>
-                </div>
-              </div>
-              <div>
-                <div class="sched-detail"><i class="bi bi-calendar3" style="color:var(--primary)"></i> Sexta-feira, 25 Out 2025</div>
-                <div class="sched-detail"><i class="bi bi-clock"     style="color:var(--primary)"></i> 10:30</div>
-                <div class="sched-detail"><i class="bi bi-geo-alt"   style="color:var(--orange)"></i> Care Plus — Av. Paulista, 1000</div>
-              </div>
-              <div class="sched-actions">
-                <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
-                <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
-              </div>
-            </div>
-
+          <div class="tabs-bar">
+            <button class="tab-btn active" data-tab="nova">Marcar Nova</button>
+            <button class="tab-btn"        data-tab="reagendar">Reagendar</button>
           </div>
-        </div><!-- /panel reagendar -->
 
-      </main>
+          <!-- ══ PAINEL: Marcar Nova ══════════════════════════════ -->
+          <div class="tab-panel" data-panel="nova">
+
+            <!-- Desktop: 2 columns (form left, calendar+time right) -->
+            <div class="dg-row dg-2">
+
+              <!-- Coluna esquerda: Especialidade + Médico -->
+              <div>
+                <div class="step-row"><div class="step-num">1</div><span class="step-title">Escolha a especialidade</span></div>
+                <div class="spec-grid">
+                  <div class="spec-card" data-spec="card" data-bg="#fce7f3"><span class="spec-icon">❤️</span><span class="spec-label">Cardiologia</span></div>
+                  <div class="spec-card" data-spec="derm" data-bg="#fef3c7"><span class="spec-icon">✨</span><span class="spec-label">Dermatologia</span></div>
+                  <div class="spec-card" data-spec="orto" data-bg="#fef9c3"><span class="spec-icon">🦴</span><span class="spec-label">Ortopedia</span></div>
+                  <div class="spec-card" data-spec="endo" data-bg="#fffbeb"><span class="spec-icon">⚡</span><span class="spec-label">Endocrinologia</span></div>
+                  <div class="spec-card" data-spec="clin" data-bg="#eff6ff"><span class="spec-icon">🩺</span><span class="spec-label">Clínico Geral</span></div>
+                  <div class="spec-card" data-spec="ped"  data-bg="#fce7f3"><span class="spec-icon">👶</span><span class="spec-label">Pediatria</span></div>
+                </div>
+
+                <div class="step-row"><div class="step-num">2</div><span class="step-title">Escolha o médico</span></div>
+                <div class="doctor-box">
+                  <div id="doctor-placeholder" class="doctor-placeholder">Selecione uma especialidade primeiro</div>
+
+                  <div class="doctor-group d-none" data-spec="card">
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Carlos Mendes</div><div class="doctor-crm">CRM 12345</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Fernanda Lima</div><div class="doctor-crm">CRM 67890</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                  <div class="doctor-group d-none" data-spec="derm">
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Julia Ramos</div><div class="doctor-crm">CRM 11111</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Rafael Costa</div><div class="doctor-crm">CRM 22222</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                  <div class="doctor-group d-none" data-spec="orto">
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Ana Paula Costa</div><div class="doctor-crm">CRM 33333</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Bruno Alves</div><div class="doctor-crm">CRM 44444</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                  <div class="doctor-group d-none" data-spec="endo">
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Marcos Faria</div><div class="doctor-crm">CRM 55555</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Carla Vieira</div><div class="doctor-crm">CRM 66666</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                  <div class="doctor-group d-none" data-spec="clin">
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. Leonardo Souza</div><div class="doctor-crm">CRM 77777</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Patrícia Santos</div><div class="doctor-crm">CRM 88888</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                  <div class="doctor-group d-none" data-spec="ped">
+                    <div class="doctor-row"><span class="doctor-avatar">🧑‍⚕️</span><div><div class="doctor-name">Dr. André Campos</div><div class="doctor-crm">CRM 99999</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                    <div class="doctor-row"><span class="doctor-avatar">👩‍⚕️</span><div><div class="doctor-name">Dra. Renata Luz</div><div class="doctor-crm">CRM 10101</div></div><i class="bi bi-check-circle-fill doctor-check d-none ms-auto"></i></div>
+                  </div>
+                </div>
+              </div><!-- /col-left -->
+
+              <!-- Coluna direita: Calendário + Horário -->
+              <div>
+                <div class="step-row"><div class="step-num">3</div><span class="step-title">Escolha o dia</span></div>
+                <div class="calendar-wrap">
+                  <div class="cal-header">
+                    <button class="cal-nav-btn" id="cal-prev"><i class="bi bi-chevron-left"></i></button>
+                    <span class="cal-month-label" id="cal-month-label">Outubro 2025</span>
+                    <button class="cal-nav-btn" id="cal-next"><i class="bi bi-chevron-right"></i></button>
+                  </div>
+                  <div class="cal-weekdays">
+                    <div class="cal-wd">Dom</div><div class="cal-wd">Seg</div><div class="cal-wd">Ter</div>
+                    <div class="cal-wd">Qua</div><div class="cal-wd">Qui</div><div class="cal-wd">Sex</div><div class="cal-wd">Sáb</div>
+                  </div>
+                  <div class="cal-days" id="calendar-body" data-month="9" data-year="2025">
+                    <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
+                    <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+                    <div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div>
+                    <div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
+                    <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
+                    <div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div>
+                    <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day today">24</div>
+                    <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div>
+                    <div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div><div class="cal-day empty"></div>
+                  </div>
+                </div>
+
+                <div class="step-row"><div class="step-num">4</div><span class="step-title">Escolha o horário</span></div>
+                <div class="time-card">
+                  <div class="time-grid">
+                    <button class="time-slot">09:00</button><button class="time-slot">09:30</button>
+                    <button class="time-slot">10:00</button><button class="time-slot">10:30</button>
+                    <button class="time-slot">11:00</button><button class="time-slot">11:30</button>
+                    <button class="time-slot">14:00</button><button class="time-slot">14:30</button>
+                    <button class="time-slot">15:00</button><button class="time-slot">15:30</button>
+                    <button class="time-slot">16:00</button><button class="time-slot">16:30</button>
+                  </div>
+                </div>
+
+                <div class="tip-box">
+                  <i class="bi bi-lightbulb-fill" style="color:#f59e0b;font-size:16px;flex-shrink:0;margin-top:2px"></i>
+                  <div class="tip-text"><strong>Dica inteligente</strong><br>Horários da manhã têm menor taxa de cancelamento e você ganha <strong>+20 pontos</strong> extras!</div>
+                </div>
+
+                <button class="btn-confirm" id="btn-confirmar">Confirmar Agendamento</button>
+              </div><!-- /col-right -->
+
+            </div><!-- /dg-row -->
+          </div><!-- /panel nova -->
+
+
+          <!-- ══ PAINEL: Reagendar ══════════════════════════════════ -->
+          <div class="tab-panel d-none" data-panel="reagendar">
+            <p class="section-title">Suas Consultas Agendadas</p>
+
+            <div class="dg-row dg-2">
+
+              <div class="sched-card">
+                <div class="sched-header">
+                  <span class="sched-avatar">🧑‍⚕️</span>
+                  <div>
+                    <div class="sched-title-row">
+                      <span class="sched-doctor">Dr. Carlos Mendes</span>
+                      <span class="confirmed-badge"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
+                    </div>
+                    <div class="sched-spec">Cardiologia</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sched-detail"><i class="bi bi-calendar3" style="color:var(--primary)"></i> Quinta-feira, 24 Out 2025</div>
+                  <div class="sched-detail"><i class="bi bi-clock"     style="color:var(--primary)"></i> 14:00</div>
+                  <button class="btn-video mt-1">🎥 Consulta Online</button>
+                </div>
+                <div class="sched-actions">
+                  <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
+                  <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
+                </div>
+              </div>
+
+              <div class="sched-card">
+                <div class="sched-header">
+                  <span class="sched-avatar">👩‍⚕️</span>
+                  <div>
+                    <div class="sched-title-row">
+                      <span class="sched-doctor">Dra. Ana Paula Costa</span>
+                      <span class="confirmed-badge"><i class="bi bi-check-circle-fill"></i> Confirmada</span>
+                    </div>
+                    <div class="sched-spec">Ortopedia — Acompanhamento</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sched-detail"><i class="bi bi-calendar3" style="color:var(--primary)"></i> Sexta-feira, 25 Out 2025</div>
+                  <div class="sched-detail"><i class="bi bi-clock"     style="color:var(--primary)"></i> 10:30</div>
+                  <div class="sched-detail"><i class="bi bi-geo-alt"   style="color:var(--orange)"></i> Care Plus — Av. Paulista, 1000</div>
+                </div>
+                <div class="sched-actions">
+                  <a href="consultas.html" class="appt-btn btn-reschedule text-center">Reagendar</a>
+                  <button class="appt-btn btn-cancel" data-action="cancelar-consulta">Cancelar</button>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /panel reagendar -->
+
+        </main>
+      </div>
+
+      <nav id="bottom-nav">
+        <a href="home.html"        class="nav-tab"><i class="bi bi-house"></i><span>Início</span></a>
+        <a href="consultas.html"   class="nav-tab active"><i class="bi bi-calendar3-fill"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
+      </nav>
+
     </div>
-
-    <nav id="bottom-nav">
-      <a href="home.html"        class="nav-tab"><i class="bi bi-house"></i><span>Início</span></a>
-      <a href="consultas.html"   class="nav-tab active"><i class="bi bi-calendar3-fill"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
-    </nav>
-
+    </div>
   </div>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/consultas.js"></script>
-<script src="../js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/consultas.js"></script>
 </body>
 </html>

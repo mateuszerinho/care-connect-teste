@@ -9,637 +9,285 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
   <link rel="icon" href="../assets/img/icon.png" type="image/png" />
   <link rel="stylesheet" href="../css/style.css" />
-
-  <style>
-    /* ── ESTILOS ESPECÍFICOS DA PÁGINA DE CADASTRO ── */
-
-    /* ── Painel esquerdo do cadastro com cor diferenciada do login ── */
-    @media (min-width: 1024px) {
-      body[data-page="cadastro"] .login-panel-left {
-        background: linear-gradient(160deg, #05234a 0%, #0f5bb5 50%, #007c91 100%);
-      }
-
-      /* ── Lista de benefícios no painel esquerdo ── */
-      .lpl-benefits {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-bottom: 2rem;
-      }
-      .lpl-benefit-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-      }
-      .lpl-benefit-icon {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: rgba(255,255,255,.12);
-        border: 1px solid rgba(255,255,255,.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        color: #80d8ff;
-      }
-      .lpl-benefit-icon svg { width: 17px; height: 17px; }
-      .lpl-benefit-text strong {
-        display: block;
-        font-size: 13px;
-        font-weight: 600;
-        color: #fff;
-        margin-bottom: 2px;
-      }
-      .lpl-benefit-text span {
-        font-size: 12px;
-        color: rgba(255,255,255,.65);
-        line-height: 1.4;
-      }
-    }
-
-    /* ── Input sem ícone de olho: padding direito padrão ── */
-    .lf-input-wrap input.no-right-icon { padding-right: 14px; }
-
-    /* ── Dois campos lado a lado ── */
-    .lf-field-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    /* ── Link 'Já tenho conta' abaixo do botão de cadastro ── */
-    .lf-already {
-      text-align: center;
-      font-size: 13px;
-      color: #64748b;
-      margin-top: 1.2rem;
-    }
-    .lf-already a {
-      color: #1469c7;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .lf-already a:hover { text-decoration: underline; }
-
-    /* ── Área de aceite dos termos de uso ── */
-    .lf-terms-wrap {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      font-size: 13px;
-      color: #475569;
-      margin-bottom: 1.4rem;
-      line-height: 1.5;
-      cursor: pointer;
-      user-select: none;
-    }
-    .lf-terms-wrap input[type="checkbox"] {
-      accent-color: #1469c7;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    .lf-terms-wrap a {
-      color: #1469c7;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .lf-terms-wrap a:hover { text-decoration: underline; }
-
-    /* ── Painel de cadastro levemente mais largo no desktop ── */
-    @media (min-width: 1024px) {
-      body[data-page="cadastro"] {
-        min-height: 100dvh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        overflow: auto !important;
-        height: auto !important;
-        background:
-          radial-gradient(ellipse 800px 600px at 10% 20%, rgba(0,188,212,.18) 0%, transparent 70%),
-          radial-gradient(ellipse 600px 500px at 90% 80%, rgba(79,195,247,.15) 0%, transparent 70%),
-          linear-gradient(135deg, #0d2d5c 0%, #1564c9 45%, #0097a7 100%) !important;
-      }
-      body[data-page="cadastro"] .login-wrap {
-        width: min(1020px, 100%);
-      }
-    }
-
-    /* ── Indicador de etapas do formulário ── */
-    .lf-steps {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 1.4rem;
-    }
-    .lf-step {
-      height: 4px;
-      border-radius: 99px;
-      background: #e2e8f0;
-      flex: 1;
-      transition: background .3s;
-    }
-    .lf-step.active  { background: #1469c7; }
-    .lf-step.done    { background: #00bcd4; }
-
-    /* ── Input de data: remove padding extra à direita ── */
-    .lf-input-wrap input[type="date"] {
-      padding-right: 14px;
-      color: #0f172a;
-    }
-    .lf-input-wrap input[type="date"]::-webkit-calendar-picker-indicator {
-      opacity: 0.5;
-      cursor: pointer;
-    }
-
-    /* ── TOASTS DE NOTIFICAÇÃO ── */
-    #toast-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      pointer-events: none;
-    }
-    .toast {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      min-width: 300px;
-      max-width: 380px;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
-      border-left: 4px solid transparent;
-      pointer-events: all;
-      animation: toastIn .35s cubic-bezier(.21,1.02,.73,1) forwards;
-      position: relative;
-      overflow: hidden;
-    }
-    .toast.hiding {
-      animation: toastOut .3s ease forwards;
-    }
-    .toast-icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .toast-body {
-      flex: 1;
-    }
-    .toast-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-    .toast-msg {
-      font-size: 13px;
-      color: #475569;
-      line-height: 1.45;
-    }
-    .toast-close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #94a3b8;
-      padding: 0;
-      line-height: 1;
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: -1px;
-    }
-    .toast-close:hover { color: #475569; }
-    .toast-progress {
-      position: absolute;
-      bottom: 0; left: 0;
-      height: 3px;
-      border-radius: 0 0 0 12px;
-      animation: toastProgress linear forwards;
-    }
-    /* ── Variantes por tipo ── */
-    .toast.error   { border-left-color: #ef4444; }
-    .toast.error   .toast-title { color: #dc2626; }
-    .toast.error   .toast-progress { background: #ef4444; }
-    .toast.success { border-left-color: #22c55e; }
-    .toast.success .toast-title { color: #16a34a; }
-    .toast.success .toast-progress { background: #22c55e; }
-    .toast.warning { border-left-color: #f59e0b; }
-    .toast.warning .toast-title { color: #d97706; }
-    .toast.warning .toast-progress { background: #f59e0b; }
-    .toast.info    { border-left-color: #3b82f6; }
-    .toast.info    .toast-title { color: #2563eb; }
-    .toast.info    .toast-progress { background: #3b82f6; }
-
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateX(40px) scale(.95); }
-      to   { opacity: 1; transform: translateX(0)    scale(1);   }
-    }
-    @keyframes toastOut {
-      from { opacity: 1; transform: translateX(0)    scale(1);   }
-      to   { opacity: 0; transform: translateX(40px) scale(.95); }
-    }
-    @keyframes toastProgress {
-      from { width: 100%; }
-      to   { width: 0%;   }
-    }
-    @media (max-width: 480px) {
-      #toast-container { top: 12px; right: 12px; left: 12px; }
-      .toast { min-width: unset; max-width: 100%; }
-    }
-  </style>
 </head>
 <body data-page="cadastro">
 
-<!-- ── Toast Container ── -->
-<div id="toast-container"></div>
+  <!-- ── Toast Container ── -->
+  <div id="toast-container"></div>
 
-<div class="login-wrap">
+  <div class="login-wrap">
 
-  <!-- ═══ LEFT PANEL (desktop only) ═══ -->
-  <div class="login-panel-left">
-    <div class="lpl-circle lpl-c1"></div>
-    <div class="lpl-circle lpl-c2"></div>
-    <div class="lpl-circle lpl-c3"></div>
+    <!-- ═══ LEFT PANEL (desktop only) ═══ -->
+    <div class="login-panel-left">
+      <div class="lpl-circle lpl-c1"></div>
+      <div class="lpl-circle lpl-c2"></div>
+      <div class="lpl-circle lpl-c3"></div>
 
-    <!-- ECG decoration -->
-    <svg class="lpl-ecg" viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 40 H180 L195 40 L210 10 L225 70 L240 25 L255 55 L265 40 H560"
-            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+      <!-- ECG decoration -->
+      <svg class="lpl-ecg" viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40 H180 L195 40 L210 10 L225 70 L240 25 L255 55 L265 40 H560"
+              stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
 
-    <div class="lpl-top">
-      <div class="lpl-logo-wrap">
-        <img class="lpl-logo-img" src="../assets/img/care_connect_logo.png" alt="Care+ Connect Logo"/>
-      </div>
-
-      <div class="lpl-tag">
-        <span class="lpl-dot"></span>
-        Cadastro rápido e gratuito
-      </div>
-
-      <h1 class="lpl-heading">Comece a cuidar<br>da sua saúde <em>hoje</em></h1>
-      <p class="lpl-desc">Crie sua conta e tenha acesso a tudo que o Care+ Connect oferece.</p>
-      <br>
-
-      <!-- Benefícios -->
-      <div class="lpl-benefits">
-        <div class="lpl-benefit-item">
-          <div class="lpl-benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-              <path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/>
-            </svg>
-          </div>
-          <div class="lpl-benefit-text">
-            <strong>Histórico completo</strong>
-            <span>Consultas, exames e prescrições num só lugar</span>
-          </div>
+      <div class="lpl-top">
+        <div class="lpl-logo-wrap">
+          <img class="lpl-logo-img" src="../assets/img/care_connect_logo.png" alt="Care+ Connect Logo"/>
         </div>
-        <div class="lpl-benefit-item">
-          <div class="lpl-benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div class="lpl-benefit-text">
-            <strong>Agendamento fácil</strong>
-            <span>Marque consultas em menos de 1 minuto</span>
-          </div>
-        </div>
-        <div class="lpl-benefit-item">
-          <div class="lpl-benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <div class="lpl-benefit-text">
-            <strong>Programa de recompensas</strong>
-            <span>Ganhe pontos por pontualidade e cuidados</span>
-          </div>
-        </div>
-        <div class="lpl-benefit-item">
-          <div class="lpl-benefit-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <div class="lpl-benefit-text">
-            <strong>Dados protegidos</strong>
-            <span>Criptografia de ponta a ponta em tudo</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="lpl-bottom">
-      <div class="lpl-stats">
-        <div class="lpl-stat">
-          <span class="lpl-stat-number">98k+</span>
-          <span class="lpl-stat-label">Pacientes</span>
+        <div class="lpl-tag">
+          <span class="lpl-dot"></span>
+          Cadastro rápido e gratuito
         </div>
-        <div class="lpl-stat-divider"></div>
-        <div class="lpl-stat">
-          <span class="lpl-stat-number">4.9★</span>
-          <span class="lpl-stat-label">Avaliação</span>
-        </div>
-        <div class="lpl-stat-divider"></div>
-        <div class="lpl-stat">
-          <span class="lpl-stat-number">350+</span>
-          <span class="lpl-stat-label">Médicos</span>
+
+        <h1 class="lpl-heading">Comece a cuidar<br>da sua saúde <em>hoje</em></h1>
+        <p class="lpl-desc">Crie sua conta e tenha acesso a tudo que o Care+ Connect oferece.</p>
+        <br>
+
+        <!-- Benefícios -->
+        <div class="lpl-benefits">
+          <div class="lpl-benefit-item">
+            <div class="lpl-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                <path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/>
+              </svg>
+            </div>
+            <div class="lpl-benefit-text">
+              <strong>Histórico completo</strong>
+              <span>Consultas, exames e prescrições num só lugar</span>
+            </div>
+          </div>
+          <div class="lpl-benefit-item">
+            <div class="lpl-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="lpl-benefit-text">
+              <strong>Agendamento fácil</strong>
+              <span>Marque consultas em menos de 1 minuto</span>
+            </div>
+          </div>
+          <div class="lpl-benefit-item">
+            <div class="lpl-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="lpl-benefit-text">
+              <strong>Programa de recompensas</strong>
+              <span>Ganhe pontos por pontualidade e cuidados</span>
+            </div>
+          </div>
+          <div class="lpl-benefit-item">
+            <div class="lpl-benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="lpl-benefit-text">
+              <strong>Dados protegidos</strong>
+              <span>Criptografia de ponta a ponta em tudo</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <p class="lpl-no-account">Já tem uma conta?</p>
-      <a href="../index.html" class="lpl-btn-create">
-        Entrar
-        <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
-          <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <div class="lpl-bottom">
+        <div class="lpl-stats">
+          <div class="lpl-stat">
+            <span class="lpl-stat-number">98k+</span>
+            <span class="lpl-stat-label">Pacientes</span>
+          </div>
+          <div class="lpl-stat-divider"></div>
+          <div class="lpl-stat">
+            <span class="lpl-stat-number">4.9★</span>
+            <span class="lpl-stat-label">Avaliação</span>
+          </div>
+          <div class="lpl-stat-divider"></div>
+          <div class="lpl-stat">
+            <span class="lpl-stat-number">350+</span>
+            <span class="lpl-stat-label">Médicos</span>
+          </div>
+        </div>
+
+        <p class="lpl-no-account">Já tem uma conta?</p>
+        <a href="../index.html" class="lpl-btn-create">
+          Entrar
+          <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
-  </div>
-  <!-- /.login-panel-left -->
+    <!-- /.login-panel-left -->
 
 
-  <!-- ═══ RIGHT PANEL — formulário de cadastro ═══ -->
-  <div class="login-panel-right">
+    <!-- ═══ RIGHT PANEL — formulário de cadastro ═══ -->
+    <div class="login-panel-right">
 
-    <!-- Logo visível apenas no mobile -->
-    <div class="lpr-mobile-logo">
-      <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect Logo" />
-    </div>
+      <!-- Logo visível apenas no mobile -->
+      <div class="lpr-mobile-logo">
+        <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect Logo" />
+      </div>
 
-    <div class="lpr-header">
-      <p class="lpr-eyebrow">Cadastro gratuito</p>
-      <h2 class="lpr-title">Criar sua conta</h2>
-      <p class="lpr-sub">Preencha os dados abaixo para começar</p>
-    </div>
+      <div class="lpr-header">
+        <p class="lpr-eyebrow">Cadastro gratuito</p>
+        <h2 class="lpr-title">Criar sua conta</h2>
+        <p class="lpr-sub">Preencha os dados abaixo para começar</p>
+      </div>
 
-    <!-- Indicador de progresso visual -->
-    <div class="lf-steps">
-      <div class="lf-step done"></div>
-      <div class="lf-step active"></div>
-      <div class="lf-step"></div>
-    </div>
+      <!-- Indicador de progresso visual -->
+      <div class="lf-steps">
+        <div class="lf-step done"></div>
+        <div class="lf-step active"></div>
+        <div class="lf-step"></div>
+      </div>
 
-    <form id="cadastro-form" novalidate>
+      <form id="cadastro-form" novalidate>
 
-      <!-- Nome e Sobrenome -->
-      <div class="lf-field-duo">
-        <div class="lf-field" style="margin-bottom:0">
-          <label for="cad-nome">Nome</label>
+        <!-- Nome e Sobrenome -->
+        <div class="lf-field-duo">
+          <div class="lf-field" style="margin-bottom:0">
+            <label for="cad-nome">Nome</label>
+            <div class="lf-input-wrap">
+              <span class="lf-input-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </span>
+              <input type="text" id="cad-nome" placeholder="João" autocomplete="given-name" class="no-right-icon" />
+            </div>
+          </div>
+          <div class="lf-field" style="margin-bottom:0">
+            <label for="cad-sobrenome">Sobrenome</label>
+            <div class="lf-input-wrap">
+              <span class="lf-input-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </span>
+              <input type="text" id="cad-sobrenome" placeholder="Silva" autocomplete="family-name" class="no-right-icon" />
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;"></div>
+
+        <!-- E-mail -->
+        <div class="lf-field">
+          <label for="cad-email">E-mail</label>
           <div class="lf-input-wrap">
             <span class="lf-input-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                <rect x="2" y="4" width="20" height="16" rx="3"/>
+                <path d="m2 7 10 7 10-7"/>
               </svg>
             </span>
-            <input type="text" id="cad-nome" placeholder="João" autocomplete="given-name" class="no-right-icon" />
+            <input type="email" id="cad-email" placeholder="seu@email.com" autocomplete="email" class="no-right-icon" />
           </div>
         </div>
-        <div class="lf-field" style="margin-bottom:0">
-          <label for="cad-sobrenome">Sobrenome</label>
+
+        <!-- Telefone -->
+        <div class="lf-field">
+          <label for="cad-telefone">Telefone / WhatsApp</label>
           <div class="lf-input-wrap">
             <span class="lf-input-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
             </span>
-            <input type="text" id="cad-sobrenome" placeholder="Silva" autocomplete="family-name" class="no-right-icon" />
+            <input type="tel" id="cad-telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" class="no-right-icon" />
           </div>
         </div>
-      </div>
 
-      <div style="margin-bottom: 1.2rem;"></div>
+        <!-- Senha -->
+        <div class="lf-field">
+          <label for="cad-senha">Senha</label>
+          <div class="lf-input-wrap">
+            <span class="lf-input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </span>
+            <input type="password" id="cad-senha" placeholder="Mín. 8 caracteres" autocomplete="new-password" />
+            <button class="lf-eye-btn" type="button" id="btn-eye-senha" aria-label="Mostrar senha">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
 
-      <!-- E-mail -->
-      <div class="lf-field">
-        <label for="cad-email">E-mail</label>
-        <div class="lf-input-wrap">
-          <span class="lf-input-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="3"/>
-              <path d="m2 7 10 7 10-7"/>
-            </svg>
+        <!-- Confirmar Senha -->
+        <div class="lf-field">
+          <label for="cad-confirma-senha">Confirmar senha</label>
+          <div class="lf-input-wrap">
+            <span class="lf-input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s-4-2.5-4-6V9l4-2 4 2v7c0 3.5-4 6-4 6z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </span>
+            <input type="password" id="cad-confirma-senha" placeholder="Repita a senha" autocomplete="new-password" />
+            <button class="lf-eye-btn" type="button" id="btn-eye-confirma" aria-label="Mostrar confirmação">
+              <i class="bi bi-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Termos de uso -->
+        <label class="lf-terms-wrap">
+          <input type="checkbox" id="cad-termos" />
+          <span>
+            Li e concordo com os
+            <a href="#">Termos de Uso</a>
+            e a
+            <a href="#">Política de Privacidade</a>
+            do Care+ Connect
           </span>
-          <input type="email" id="cad-email" placeholder="seu@email.com" autocomplete="email" class="no-right-icon" />
-        </div>
+        </label>
+
+        <button type="submit" class="lf-btn-primary">Criar minha conta</button>
+
+      </form>
+
+      <!-- Divisor -->
+      <div class="lf-divider">ou cadastre-se com</div>
+
+      <!-- Botões sociais -->
+      <div class="lf-social-btns">
+        <button class="lf-btn-social lf-btn-google" id="btn-google">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button class="lf-btn-social lf-btn-careplus" id="btn-careplus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+            <path d="M12 21C6.5 21 2 17 2 12S6.5 3 12 3s10 4 10 9-4.5 9-10 9z"/>
+            <path d="M12 8v8M8 12h8"/>
+          </svg>
+          Care Plus ID
+        </button>
       </div>
 
-      <!-- Telefone -->
-      <div class="lf-field">
-        <label for="cad-telefone">Telefone / WhatsApp</label>
-        <div class="lf-input-wrap">
-          <span class="lf-input-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </span>
-          <input type="tel" id="cad-telefone" placeholder="(11) 9 0000-0000" autocomplete="tel" class="no-right-icon" />
-        </div>
-      </div>
+      <!-- Link voltar para login -->
+      <p class="lf-already">
+        Já tem uma conta?
+        <a href="../index.html">Entrar agora</a>
+      </p>
 
-      <!-- Senha -->
-      <div class="lf-field">
-        <label for="cad-senha">Senha</label>
-        <div class="lf-input-wrap">
-          <span class="lf-input-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </span>
-          <input type="password" id="cad-senha" placeholder="Mín. 8 caracteres" autocomplete="new-password" />
-          <button class="lf-eye-btn" type="button" id="btn-eye-senha" aria-label="Mostrar senha">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </div>
+    </div><!-- /.login-panel-right -->
 
-      <!-- Confirmar Senha -->
-      <div class="lf-field">
-        <label for="cad-confirma-senha">Confirmar senha</label>
-        <div class="lf-input-wrap">
-          <span class="lf-input-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s-4-2.5-4-6V9l4-2 4 2v7c0 3.5-4 6-4 6z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-          </span>
-          <input type="password" id="cad-confirma-senha" placeholder="Repita a senha" autocomplete="new-password" />
-          <button class="lf-eye-btn" type="button" id="btn-eye-confirma" aria-label="Mostrar confirmação">
-            <i class="bi bi-eye"></i>
-          </button>
-        </div>
-      </div>
+  </div><!-- /.login-wrap -->
 
-      <!-- Termos de uso -->
-      <label class="lf-terms-wrap">
-        <input type="checkbox" id="cad-termos" />
-        <span>
-          Li e concordo com os
-          <a href="#">Termos de Uso</a>
-          e a
-          <a href="#">Política de Privacidade</a>
-          do Care+ Connect
-        </span>
-      </label>
-
-      <button type="submit" class="lf-btn-primary">Criar minha conta</button>
-
-    </form>
-
-    <!-- Divisor -->
-    <div class="lf-divider">ou cadastre-se com</div>
-
-    <!-- Botões sociais -->
-    <div class="lf-social-btns">
-      <button class="lf-btn-social lf-btn-google" id="btn-google">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        Google
-      </button>
-      <button class="lf-btn-social lf-btn-careplus" id="btn-careplus">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-          <path d="M12 21C6.5 21 2 17 2 12S6.5 3 12 3s10 4 10 9-4.5 9-10 9z"/>
-          <path d="M12 8v8M8 12h8"/>
-        </svg>
-        Care Plus ID
-      </button>
-    </div>
-
-    <!-- Link voltar para login -->
-    <p class="lf-already">
-      Já tem uma conta?
-      <a href="../index.html">Entrar agora</a>
-    </p>
-
-  </div><!-- /.login-panel-right -->
-
-</div><!-- /.login-wrap -->
-
-<script>
-  // ── Sistema de Toast ──
-  const Toast = (() => {
-    const ICONS = {
-      error:   `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
-      success: `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>`,
-      warning: `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
-      info:    `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`,
-    };
-    const TITLES = { error: 'Erro', success: 'Sucesso!', warning: 'Atenção', info: 'Informação' };
-    const DURATION = { error: 4500, success: 3000, warning: 4000, info: 3500 };
-
-    function show(message, type = 'info') {
-      const container = document.getElementById('toast-container');
-      const duration  = DURATION[type] ?? 3500;
-      const el = document.createElement('div');
-      el.className = `toast ${type}`;
-      el.innerHTML = `
-        ${ICONS[type] ?? ICONS.info}
-        <div class="toast-body">
-          <div class="toast-title">${TITLES[type] ?? 'Aviso'}</div>
-          <div class="toast-msg">${message}</div>
-        </div>
-        <button class="toast-close" aria-label="Fechar">&#x2715;</button>
-        <div class="toast-progress" style="animation-duration:${duration}ms"></div>
-      `;
-      container.appendChild(el);
-      el.querySelector('.toast-close').addEventListener('click', () => dismiss(el));
-      const timer = setTimeout(() => dismiss(el), duration);
-      el._timer = timer;
-    }
-
-    function dismiss(el) {
-      if (el._dismissed) return;
-      el._dismissed = true;
-      clearTimeout(el._timer);
-      el.classList.add('hiding');
-      el.addEventListener('animationend', () => el.remove(), { once: true });
-    }
-
-    return { show };
-  })();
-
-
-  function setupEye(btnId, inputId) {
-    const btn   = document.getElementById(btnId);
-    const input = document.getElementById(inputId);
-    if (!btn || !input) return;
-    btn.addEventListener('click', () => {
-      const isPassword = input.type === 'password';
-      input.type = isPassword ? 'text' : 'password';
-      btn.querySelector('i').className = isPassword ? 'bi bi-eye-slash' : 'bi bi-eye';
-    });
-  }
-  setupEye('btn-eye-senha',    'cad-senha');
-  setupEye('btn-eye-confirma', 'cad-confirma-senha');
-
-  // ── Máscara simples de telefone ──
-  const telInput = document.getElementById('cad-telefone');
-  if (telInput) {
-    telInput.addEventListener('input', e => {
-      let v = e.target.value.replace(/\D/g, '').slice(0, 11);
-      if (v.length >= 11) v = `(${v.slice(0,2)}) ${v.slice(2,3)} ${v.slice(3,7)}-${v.slice(7)}`;
-      else if (v.length >= 7) v = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
-      else if (v.length >= 3) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-      e.target.value = v;
-    });
-  }
-
-  // ── Validação e submit ──
-  document.getElementById('cadastro-form').addEventListener('submit', e => {
-    e.preventDefault();
-    const nome    = document.getElementById('cad-nome').value.trim();
-    const sobrenome = document.getElementById('cad-sobrenome').value.trim();
-    const email   = document.getElementById('cad-email').value.trim();
-    const senha   = document.getElementById('cad-senha').value;
-    const confirma = document.getElementById('cad-confirma-senha').value;
-    const termos  = document.getElementById('cad-termos').checked;
-
-    if (!nome || !sobrenome || !email || !senha || !confirma) {
-      Toast.show('Por favor, preencha todos os campos obrigatórios.', 'error');
-      return;
-    }
-    if (senha.length < 8) {
-      Toast.show('A senha deve ter no mínimo 8 caracteres.', 'error');
-      return;
-    }
-    if (senha !== confirma) {
-      Toast.show('As senhas não coincidem. Verifique e tente novamente.', 'error');
-      return;
-    }
-    if (!termos) {
-      Toast.show('Você precisa aceitar os Termos de Uso para continuar.', 'warning');
-      return;
-    }
-    // Salva dados do cadastro no perfil (usado na sidebar, home e perfil)
-    try {
-      const telefone = document.getElementById('cad-telefone').value.trim();
-      const perfilData = {
-        nome:      nome + ' ' + sobrenome,
-        email:     email,
-        telefone:  telefone
-      };
-      localStorage.setItem('cc_perfil_v1', JSON.stringify(perfilData));
-    } catch (_) {}
-
-    Toast.show(`Conta criada com sucesso! Bem-vindo(a), ${nome}!`, 'success');
-    setTimeout(() => { window.location.href = 'home.html'; }, 1800);
-  });
-</script>
-<script src="../js/main.js"></script>
+  <script src="../js/cadastro.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

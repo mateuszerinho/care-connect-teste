@@ -22,128 +22,128 @@
   </style>
 </head>
 <body data-page="home">
-<div id="app">
+  <div id="app">
 
-  <!-- ═══ SIDEBAR (desktop only) ═══════════════════════════════ -->
-  <aside id="sidebar">
-    <div class="sb-brand">
-      <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
-    </div>
-
-    <nav class="sb-nav">
-      <div class="sb-section-label">Principal</div>
-      <a href="home.html"        class="sb-link active"><i class="bi bi-house-fill"></i><span>Início</span></a>
-      <a href="consultas.html"   class="sb-link"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
-      <div class="sb-divider"></div>
-      <div class="sb-section-label">Outros</div>
-      <a href="notificacoes.html" class="sb-link"><i class="bi bi-bell"></i><span>Notificações</span></a>
-      <a href="ia-predicao.html"  class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
-      <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
-    </nav>
-
-    <div class="sb-user">
-      <div class="sb-avatar" id="sb-avatar">U</div>
-      <div class="sb-user-info">
-        <div class="sb-user-name" id="sb-user-name">Usuario(a)</div>
-        <div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div>
+    <!-- ═══ SIDEBAR (desktop only) ═══════════════════════════════ -->
+    <aside id="sidebar">
+      <div class="sb-brand">
+        <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
       </div>
-      <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
-    </div>
-  </aside>
 
-  <!-- ═══ MAIN ═══════════════════════════════════════════════════ -->
-  <div id="main-wrap">
-  <div id="phone-shell">
+      <nav class="sb-nav">
+        <div class="sb-section-label">Principal</div>
+        <a href="home.html"        class="sb-link active"><i class="bi bi-house-fill"></i><span>Início</span></a>
+        <a href="consultas.html"   class="sb-link"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Outros</div>
+        <a href="notificacoes.html" class="sb-link"><i class="bi bi-bell"></i><span>Notificações</span></a>
+        <a href="ia-predicao.html"  class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
+        <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
+      </nav>
 
-    <!-- HEADER -->
-    <header class="g-header">
-      <div class="g-header-top">
-        <div style="flex:1">
-          <div class="g-header-greeting">Olá, bem-vindo(a)! 👋</div>
-          <div class="g-header-name" id="g-header-name">Usuario(a)</div>
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-avatar">U</div>
+        <div class="sb-user-info">
+          <div class="sb-user-name" id="sb-user-name">Usuario(a)</div>
+          <div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div>
         </div>
-        <a href="notificacoes.html" class="g-header-btn" aria-label="Notificações">
-          <i class="bi bi-bell"></i>
-        </a>
-        <a href="configuracoes.html" class="g-header-btn ms-1" aria-label="Configurações">
-          <i class="bi bi-gear"></i>
-        </a>
+        <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
       </div>
-    </header>
+    </aside>
 
-    <!-- CONTENT -->
-    <div class="page-scroll">
-      <main class="page-body">
+    <!-- ═══ MAIN ═══════════════════════════════════════════════════ -->
+    <div id="main-wrap">
+    <div id="phone-shell">
 
-        <!-- ── Desktop grid: consultas (left) + pontos/ações (right) ── -->
-        <div class="dg-row dg-3-2">
-
-          <!-- COLUNA ESQUERDA: Consultas (renderizadas dinamicamente pelo main.js) -->
-          <div>
-            <p class="section-title">Próximas Consultas</p>
-            <div id="home-appt-list">
-              <!-- skeleton enquanto carrega -->
-              <div class="appt-card home-skeleton" style="border-left-color:#e2e8f0">
-                <div class="sk-line sk-w60"></div>
-                <div class="sk-line sk-w40" style="margin-top:6px"></div>
-                <div class="sk-line sk-w80" style="margin-top:10px"></div>
-              </div>
-            </div>
+      <!-- HEADER -->
+      <header class="g-header">
+        <div class="g-header-top">
+          <div style="flex:1">
+            <div class="g-header-greeting">Olá, bem-vindo(a)! 👋</div>
+            <div class="g-header-name" id="g-header-name">Usuario(a)</div>
           </div>
+          <a href="notificacoes.html" class="g-header-btn" aria-label="Notificações">
+            <i class="bi bi-bell"></i>
+          </a>
+          <a href="configuracoes.html" class="g-header-btn ms-1" aria-label="Configurações">
+            <i class="bi bi-gear"></i>
+          </a>
+        </div>
+      </header>
 
-          <!-- COLUNA DIREITA: Pontos + Ações -->
-          <div>
-            <p class="section-title">Seus Pontos</p>
+      <!-- CONTENT -->
+      <div class="page-scroll">
+        <main class="page-body">
 
-            <div class="points-card">
-              <div class="points-row">
-                <div>
-                  <div class="points-label">Pontos de responsabilidade</div>
-                  <div class="points-value">320 pts</div>
+          <!-- ── Desktop grid: consultas (left) + pontos/ações (right) ── -->
+          <div class="dg-row dg-3-2">
+
+            <!-- COLUNA ESQUERDA: Consultas (renderizadas dinamicamente pelo main.js) -->
+            <div>
+              <p class="section-title">Próximas Consultas</p>
+              <div id="home-appt-list">
+                <!-- skeleton enquanto carrega -->
+                <div class="appt-card home-skeleton" style="border-left-color:#e2e8f0">
+                  <div class="sk-line sk-w60"></div>
+                  <div class="sk-line sk-w40" style="margin-top:6px"></div>
+                  <div class="sk-line sk-w80" style="margin-top:10px"></div>
                 </div>
-                <div class="points-trophy"><i class="bi bi-trophy" style="font-size:22px;color:#fff"></i></div>
               </div>
-              <div class="prog-track">
-                <div class="prog-fill" style="width:80%;background:rgba(255,255,255,.9)" data-pct="80%"></div>
-              </div>
-              <div class="points-hint">Faltam 80 pontos para o próximo nível! 🚀</div>
             </div>
 
-            <p class="section-title">Ações rápidas</p>
-            <div class="quick-actions">
-              <a href="notificacoes.html" class="action-card">
-                <div class="action-icon">🔔</div>
-                <div class="action-title">Notificações</div>
-                <div class="action-sub">5 novos alertas</div>
-              </a>
-              <a href="ia-predicao.html" class="action-card">
-                <div class="action-icon" style="background:var(--purple-lt)">🤖</div>
-                <div class="action-title">IA Inteligente</div>
-                <div class="action-sub">Ver previsões</div>
-              </a>
+            <!-- COLUNA DIREITA: Pontos + Ações -->
+            <div>
+              <p class="section-title">Seus Pontos</p>
+
+              <div class="points-card">
+                <div class="points-row">
+                  <div>
+                    <div class="points-label">Pontos de responsabilidade</div>
+                    <div class="points-value">320 pts</div>
+                  </div>
+                  <div class="points-trophy"><i class="bi bi-trophy" style="font-size:22px;color:#fff"></i></div>
+                </div>
+                <div class="prog-track">
+                  <div class="prog-fill" style="width:80%;background:rgba(255,255,255,.9)" data-pct="80%"></div>
+                </div>
+                <div class="points-hint">Faltam 80 pontos para o próximo nível! 🚀</div>
+              </div>
+
+              <p class="section-title">Ações rápidas</p>
+              <div class="quick-actions">
+                <a href="notificacoes.html" class="action-card">
+                  <div class="action-icon">🔔</div>
+                  <div class="action-title">Notificações</div>
+                  <div class="action-sub">5 novos alertas</div>
+                </a>
+                <a href="ia-predicao.html" class="action-card">
+                  <div class="action-icon" style="background:var(--purple-lt)">🤖</div>
+                  <div class="action-title">IA Inteligente</div>
+                  <div class="action-sub">Ver previsões</div>
+                </a>
+              </div>
             </div>
-          </div>
 
-        </div><!-- /dg-row -->
+          </div><!-- /dg-row -->
 
-      </main>
-    </div>
+        </main>
+      </div>
 
-    <!-- BOTTOM NAV (mobile/tablet) -->
-    <nav id="bottom-nav">
-      <a href="home.html"        class="nav-tab active"><i class="bi bi-house-fill"></i><span>Início</span></a>
-      <a href="consultas.html"   class="nav-tab"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
-    </nav>
+      <!-- BOTTOM NAV (mobile/tablet) -->
+      <nav id="bottom-nav">
+        <a href="home.html"        class="nav-tab active"><i class="bi bi-house-fill"></i><span>Início</span></a>
+        <a href="consultas.html"   class="nav-tab"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
+      </nav>
 
-  </div><!-- /phone-shell -->
-  </div><!-- /main-wrap -->
+    </div><!-- /phone-shell -->
+    </div><!-- /main-wrap -->
 
-</div><!-- /app -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/main.js"></script>
+  </div><!-- /app -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

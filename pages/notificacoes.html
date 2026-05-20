@@ -11,121 +11,121 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body data-page="notificacoes">
-<div id="app">
+  <div id="app">
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar">
-    <div class="sb-brand">
-      <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
-    </div>
-    <nav class="sb-nav">
-      <div class="sb-section-label">Principal</div>
-      <a href="home.html"        class="sb-link"><i class="bi bi-house"></i><span>Início</span></a>
-      <a href="consultas.html"   class="sb-link"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
-      <div class="sb-divider"></div>
-      <div class="sb-section-label">Outros</div>
-      <a href="notificacoes.html"  class="sb-link active"><i class="bi bi-bell-fill"></i><span>Notificações</span></a>
-      <a href="ia-predicao.html"   class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
-      <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
-    </nav>
-    <div class="sb-user">
-      <div class="sb-avatar" id="sb-avatar">U</div>
-      <div class="sb-user-info"><div class="sb-user-name" id="sb-user-name">Usuario(a)</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
-      <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div id="main-wrap">
-  <div id="phone-shell">
-
-    <header class="g-header">
-      <div class="g-header-top">
-        <a href="home.html" class="g-header-btn me-2"><i class="bi bi-arrow-left"></i></a>
-        <h1 class="g-header-title">Lembretes e Alertas</h1>
-        <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sb-brand">
+        <img src="../assets/img/care_connect_logo.png" alt="Care+ Connect" class="sb-brand-img" />
       </div>
-      <div class="notif-chips">
-        <button class="chip active" data-category="Todos">Todos</button>
-        <button class="chip" data-category="IA">IA</button>
-        <button class="chip" data-category="Saúde">Saúde</button>
-        <button class="chip" data-category="Gamificação">Gamificação</button>
+      <nav class="sb-nav">
+        <div class="sb-section-label">Principal</div>
+        <a href="home.html"        class="sb-link"><i class="bi bi-house"></i><span>Início</span></a>
+        <a href="consultas.html"   class="sb-link"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="sb-link"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="sb-link"><i class="bi bi-person"></i><span>Perfil</span></a>
+        <div class="sb-divider"></div>
+        <div class="sb-section-label">Outros</div>
+        <a href="notificacoes.html"  class="sb-link active"><i class="bi bi-bell-fill"></i><span>Notificações</span></a>
+        <a href="ia-predicao.html"   class="sb-link"><i class="bi bi-stars"></i><span>IA Inteligente</span></a>
+        <a href="configuracoes.html" class="sb-link"><i class="bi bi-gear"></i><span>Configurações</span></a>
+      </nav>
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-avatar">U</div>
+        <div class="sb-user-info"><div class="sb-user-name" id="sb-user-name">Usuario(a)</div><div class="sb-user-pts"><i class="bi bi-trophy-fill" style="color:#f59e0b;font-size:11px"></i> 320 pts</div></div>
+        <a href="../index.html" class="sb-logout" title="Sair"><i class="bi bi-box-arrow-right"></i></a>
       </div>
-    </header>
+    </aside>
 
-    <div class="page-scroll">
-      <main class="page-body">
+    <!-- MAIN -->
+    <div id="main-wrap">
+    <div id="phone-shell">
 
-        <!-- Desktop: cards em 2 colunas -->
-        <div class="dg-row dg-2" id="notif-grid">
-
-          <div class="notif-card" data-category="IA" style="background:#fff7ed">
-            <span class="notif-icon">🚗</span>
-            <div class="notif-body">
-              <div class="notif-top"><span class="notif-title">Trânsito intenso na sua região</span><span class="notif-time">Há 2h</span></div>
-              <div class="notif-desc">Saia 15 minutos antes para sua consulta de amanhã.</div>
-            </div>
-          </div>
-
-          <div class="notif-card" data-category="IA" style="background:#eff6ff">
-            <span class="notif-icon">☂️</span>
-            <div class="notif-body">
-              <div class="notif-top"><span class="notif-title">Possibilidade de chuva</span><span class="notif-time">Há 5h</span></div>
-              <div class="notif-desc">Leve um guarda-chuva. Previsão de chuva para quinta-feira.</div>
-            </div>
-          </div>
-
-          <div class="notif-card" data-category="Saúde" style="background:#f0fdf4">
-            <span class="notif-icon">💡</span>
-            <div class="notif-body">
-              <div class="notif-top"><span class="notif-title">Dica de saúde</span><span class="notif-time">Há 1d</span></div>
-              <div class="notif-desc">Hidratar-se melhora seu bem-estar. Beba pelo menos 2L de água hoje!</div>
-            </div>
-          </div>
-
-          <div class="notif-card" data-category="Gamificação" style="background:#fdf4ff">
-            <span class="notif-icon">🎯</span>
-            <div class="notif-body">
-              <div class="notif-top"><span class="notif-title">Meta alcançada!</span><span class="notif-time">Há 2d</span></div>
-              <div class="notif-desc">Você completou 3 consultas consecutivas. +50 pontos!</div>
-            </div>
-          </div>
-
-          <div class="notif-card" data-category="Saúde" style="background:#f0f9ff">
-            <span class="notif-icon">📅</span>
-            <div class="notif-body">
-              <div class="notif-top"><span class="notif-title">Lembrete de consulta</span><span class="notif-time">Há 3d</span></div>
-              <div class="notif-desc">Sua consulta com Dr. Carlos Mendes é amanhã às 14:00.</div>
-            </div>
-          </div>
-
-        </div><!-- /notif-grid -->
-
-        <div id="notif-empty" class="empty-state" style="display:none">
-          <i class="bi bi-bell-slash"></i>
-          <p>Nenhum alerta nesta categoria</p>
+      <header class="g-header">
+        <div class="g-header-top">
+          <a href="home.html" class="g-header-btn me-2"><i class="bi bi-arrow-left"></i></a>
+          <h1 class="g-header-title">Lembretes e Alertas</h1>
+          <a href="configuracoes.html" class="g-header-btn"><i class="bi bi-gear"></i></a>
         </div>
+        <div class="notif-chips">
+          <button class="chip active" data-category="Todos">Todos</button>
+          <button class="chip" data-category="IA">IA</button>
+          <button class="chip" data-category="Saúde">Saúde</button>
+          <button class="chip" data-category="Gamificação">Gamificação</button>
+        </div>
+      </header>
 
-        <a href="configuracoes.html" class="btn-customize">
-          <i class="bi bi-gear"></i> Personalizar lembretes
-        </a>
+      <div class="page-scroll">
+        <main class="page-body">
 
-      </main>
+          <!-- Desktop: cards em 2 colunas -->
+          <div class="dg-row dg-2" id="notif-grid">
+
+            <div class="notif-card" data-category="IA" style="background:#fff7ed">
+              <span class="notif-icon">🚗</span>
+              <div class="notif-body">
+                <div class="notif-top"><span class="notif-title">Trânsito intenso na sua região</span><span class="notif-time">Há 2h</span></div>
+                <div class="notif-desc">Saia 15 minutos antes para sua consulta de amanhã.</div>
+              </div>
+            </div>
+
+            <div class="notif-card" data-category="IA" style="background:#eff6ff">
+              <span class="notif-icon">☂️</span>
+              <div class="notif-body">
+                <div class="notif-top"><span class="notif-title">Possibilidade de chuva</span><span class="notif-time">Há 5h</span></div>
+                <div class="notif-desc">Leve um guarda-chuva. Previsão de chuva para quinta-feira.</div>
+              </div>
+            </div>
+
+            <div class="notif-card" data-category="Saúde" style="background:#f0fdf4">
+              <span class="notif-icon">💡</span>
+              <div class="notif-body">
+                <div class="notif-top"><span class="notif-title">Dica de saúde</span><span class="notif-time">Há 1d</span></div>
+                <div class="notif-desc">Hidratar-se melhora seu bem-estar. Beba pelo menos 2L de água hoje!</div>
+              </div>
+            </div>
+
+            <div class="notif-card" data-category="Gamificação" style="background:#fdf4ff">
+              <span class="notif-icon">🎯</span>
+              <div class="notif-body">
+                <div class="notif-top"><span class="notif-title">Meta alcançada!</span><span class="notif-time">Há 2d</span></div>
+                <div class="notif-desc">Você completou 3 consultas consecutivas. +50 pontos!</div>
+              </div>
+            </div>
+
+            <div class="notif-card" data-category="Saúde" style="background:#f0f9ff">
+              <span class="notif-icon">📅</span>
+              <div class="notif-body">
+                <div class="notif-top"><span class="notif-title">Lembrete de consulta</span><span class="notif-time">Há 3d</span></div>
+                <div class="notif-desc">Sua consulta com Dr. Carlos Mendes é amanhã às 14:00.</div>
+              </div>
+            </div>
+
+          </div><!-- /notif-grid -->
+
+          <div id="notif-empty" class="empty-state" style="display:none">
+            <i class="bi bi-bell-slash"></i>
+            <p>Nenhum alerta nesta categoria</p>
+          </div>
+
+          <a href="configuracoes.html" class="btn-customize">
+            <i class="bi bi-gear"></i> Personalizar lembretes
+          </a>
+
+        </main>
+      </div>
+
+      <nav id="bottom-nav">
+        <a href="home.html"        class="nav-tab"><i class="bi bi-house"></i><span>Início</span></a>
+        <a href="consultas.html"   class="nav-tab"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
+        <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
+        <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
+      </nav>
+
     </div>
-
-    <nav id="bottom-nav">
-      <a href="home.html"        class="nav-tab"><i class="bi bi-house"></i><span>Início</span></a>
-      <a href="consultas.html"   class="nav-tab"><i class="bi bi-calendar3"></i><span>Consultas</span></a>
-      <a href="recompensas.html" class="nav-tab"><i class="bi bi-trophy"></i><span>Recompensas</span></a>
-      <a href="perfil.html"      class="nav-tab"><i class="bi bi-person"></i><span>Perfil</span></a>
-    </nav>
-
+    </div>
   </div>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
